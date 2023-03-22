@@ -13,6 +13,8 @@ def mispelled(word1,word2):
         else:
             return True
     else:
+        # longer = max(word1, word2, key=len)
+        # shorter = min(word1, word2, key=len)
         if len(word1) > len(word2):
             max_word = word1
             min_word = word2
