@@ -2,11 +2,15 @@
 
 
 
-
+count = []
 def deep_count(a):
-    pass
-
-
+    global count
+    for i in a:
+        count.append(1)
+        if type(i) == list:
+            deep_count(i)
+    print(len(count))
+    return len(count)
 
 
 
