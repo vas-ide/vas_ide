@@ -6,7 +6,7 @@
 def convert_palindromes(numbers):
     lst = []
     for _ in numbers:
-        if f"{_}" == str(_)[::-1]:
+        if f"{_}" == f"{_}"[::-1]:
             lst.append(1)
         else:
             lst.append(0)
