@@ -6,6 +6,8 @@ import numpy as np
 
 def list_beautify(data: list[list[int]]) -> str:
     print(np.array(data))
+    for i in np.array(data):
+        print(i)
     # str_result = "["
     # for i in data:
     #     lst = []
@@ -15,10 +17,6 @@ def list_beautify(data: list[list[int]]) -> str:
     # str_result = str_result[:-3] + f"]"
     # print(str_result)
     # return str_result
-
-
-    print(np.array(data))
-
 
 list_beautify([[1, 2, 10, 150], [10, 2, 1000, 2], [1, 120, 1, 1000]])
 #"[[ 1,   2,   10,  150],\n [10,   2, 1000,    2],\n [ 1, 120,    1, 1000]]"
