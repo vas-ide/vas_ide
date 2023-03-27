@@ -11,6 +11,15 @@ def skillbox_main(request, *args, **kwargs):
 def python_main(request, *args, **kwargs):
     return render(request, "advertisement/python_main.html", {})
 
+def pandas_main(request, *args, **kwargs):
+    return render(request, "advertisement/pandas_main.html", {})
+
+def django_main(request, *args, **kwargs):
+    return render(request, "advertisement/django_main.html", {})
+
+def git_main(request, *args, **kwargs):
+    return render(request, "advertisement/git_main.html", {})
+
 
 
 # def advertisement_list(request, *args, **kwargs):
