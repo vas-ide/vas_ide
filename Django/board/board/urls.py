@@ -25,4 +25,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # path("", index_page)
     path("", include("advertisement.urls")),
+    path("", include("petcom.urls")),
 ]
