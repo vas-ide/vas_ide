@@ -9,7 +9,14 @@ from django.http import HttpResponse
 
 def advertisement_list(request, *args, **kwargs):
     ip = request.META.get("REMOTE_ADDR")
-    return render(request, "advertisement/advertisement_list.html", {"ip_address": ip})
+    advertisement = ["Delivery to clinic",
+                     "Опрос и первичный осмотр",
+                     "Диагностика и анализы",
+                     "Вмешательство или процедуры",
+                     "Вторичный анализ и осмотр",
+                     "Delivery from clinic to home"
+    ]
+    return render(request, "advertisement/advertisement_list.html", {"ip_address": ip, "advertisement": advertisement})
 
 def skillbox_main(request, *args, **kwargs):
     return render(request, "advertisement/skillbox_main.html", {})
