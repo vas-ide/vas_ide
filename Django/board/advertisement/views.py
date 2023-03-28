@@ -2,8 +2,14 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 
+# def get_user_ip(request):
+#     # ip = request.META.get("REMOTE_ADDR")
+#     return render(request, "advertisement/advertisement_list.html", {"ip_address": ip})
+
+
 def advertisement_list(request, *args, **kwargs):
-    return render(request, "advertisement/advertisement_list.html", {})
+    ip = request.META.get("REMOTE_ADDR")
+    return render(request, "advertisement/advertisement_list.html", {"ip_address": ip})
 
 def skillbox_main(request, *args, **kwargs):
     return render(request, "advertisement/skillbox_main.html", {})
@@ -15,7 +21,8 @@ def pandas_main(request, *args, **kwargs):
     return render(request, "advertisement/pandas_main.html", {})
 
 def django_main(request, *args, **kwargs):
-    return render(request, "advertisement/django_main.html", {})
+    ip = request.META.get("REMOTE_ADDR")
+    return render(request, "advertisement/django_main.html", {"ip_address": ip})
 
 def git_main(request, *args, **kwargs):
     return render(request, "advertisement/git_main.html", {})
