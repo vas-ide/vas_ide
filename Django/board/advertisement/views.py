@@ -35,23 +35,6 @@ def git_main(request, *args, **kwargs):
     return render(request, "advertisement/git_main.html", {})
 
 
-
-# def advertisement_list(request, *args, **kwargs):
-#     return HttpResponse("<ul>"
-#                         "<li>Delivery to clinic</li>"
-#                         "<li>Опрос и первичный осмотр</li>"
-#                         "<li>Диагностика и анализы</li>"
-#                         "<li>Вмешательство или процедуры</li>"
-#                         "<li>Вторичный анализ </li>"
-#                         "<li>Delivery from clinic to home</li>"
-#                         "</ul>"
-#                         )
-
-# def index_page(request):
-#     return render(request, "index.html")
-
-
-
 def categories_us(request):
     ip = request.META.get("REMOTE_ADDR")
     categories = ["Delivery to clinic",
@@ -71,7 +54,13 @@ def about_us(request):
 
 def contact_us(request):
     ip = request.META.get("REMOTE_ADDR")
-    return render(request, "advertisement/contacts.html", {"ip_address": ip})
+    chip = ["Intel", "AMD"]
+    video_chip = ["Intel", "AMD", "Nvidia"]
+    ssd = ["Samsung", "WD"]
+    return render(request, "advertisement/contacts.html", {
+        "ip_address": ip,
+        "chip": chip, "video_chip": video_chip, "ssd": ssd
+    })
 
 def regions_us(request):
     ip = request.META.get("REMOTE_ADDR")
@@ -85,7 +74,7 @@ def regions_us(request):
         "Ставропольский Край",
         "Ставрополь",
     ]
-    return render(request, "advertisement/categories.html", {"ip_address": ip, "regions": regions})
+    return render(request, "advertisement/regions.html", {"ip_address": ip, "regions": regions})
 
 
 
