@@ -12,5 +12,6 @@ urlpatterns = [
     path("git_main.html/", views.git_main, name="git_main"),
     path("about.html/", views.about_us, name="about"),
     path("categories.html/", views.categories_us, name="categories"),
-    path("contacts/", views.contact_us, name="contact")
+    path("contacts.html/", views.contact_us, name="contact"),
+    path("regions.html/", views.regions_us, name="region"),
 ]

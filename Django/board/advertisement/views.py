@@ -52,7 +52,7 @@ def git_main(request, *args, **kwargs):
 
 
 
-def categories_us(request, *args, **kwargs):
+def categories_us(request):
     ip = request.META.get("REMOTE_ADDR")
     categories = ["Delivery to clinic",
                      "Опрос и первичный осмотр",
@@ -61,21 +61,31 @@ def categories_us(request, *args, **kwargs):
                      "Вторичный анализ и осмотр",
                      "Delivery from clinic to home"
     ]
-    return render(request, "advertisement/advertisement_list.html", {"ip_address": ip, "categories": categories})
+    return render(request, "advertisement/categories.html", {"ip_address": ip, "categories": categories})
 
 
-def about_us(request, *args, **kwargs):
+def about_us(request):
     ip = request.META.get("REMOTE_ADDR")
-    return render(request, "advertisement/advertisement_list.html", {"ip_address": ip})
+    return render(request, "advertisement/about.html", {"ip_address": ip})
 
 
-def contact_us(request, *args, **kwargs):
+def contact_us(request):
     ip = request.META.get("REMOTE_ADDR")
-    return render(request, "advertisement/advertisement_list.html", {"ip_address": ip})
+    return render(request, "advertisement/contacts.html", {"ip_address": ip})
 
-
-
-
+def regions_us(request):
+    ip = request.META.get("REMOTE_ADDR")
+    regions = [
+        "Краснодарский Край",
+        "Краснодар",
+        "Ростовская Область",
+        "Ростов-на-Дону"
+        "Волгоградская Область",
+        "Волгоград",
+        "Ставропольский Край",
+        "Ставрополь",
+    ]
+    return render(request, "advertisement/categories.html", {"ip_address": ip, "regions": regions})
 
 
 
