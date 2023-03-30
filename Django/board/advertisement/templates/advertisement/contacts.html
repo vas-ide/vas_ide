@@ -10,8 +10,14 @@
             <h1>Pet-Doctor</h1>
     <ul>
         <h3>PC</h3>
-        {% for i in regions %}
-            <li>{{ region }}</li>
+        {% for item in chip %}
+            <li>Chip {{ item }}</li>
+        {% endfor %}
+        {% for item in video_chip %}
+            <li>Video {{ item }}</li>
+        {% endfor %}
+        {% for item in ssd %}
+            <li>SSD {{ item }}</li>
         {% endfor %}
     </ul>
 </div>
