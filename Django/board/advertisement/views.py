@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views import View
 from django.http import HttpResponse
 
 
@@ -31,6 +32,9 @@ def django_main(request, *args, **kwargs):
     ip = request.META.get("REMOTE_ADDR")
     return render(request, "advertisement/django_main.html", {"ip_address": ip})
 
+
+
+
 def git_main(request, *args, **kwargs):
     return render(request, "advertisement/git_main.html", {})
 
@@ -47,9 +51,13 @@ def categories_us(request):
     return render(request, "advertisement/categories.html", {"ip_address": ip, "categories": categories})
 
 
-def about_us(request):
-    ip = request.META.get("REMOTE_ADDR")
-    return render(request, "advertisement/about.html", {"ip_address": ip})
+class About(View):
+    def get(self, request):
+        return render(request, "advertisement/about.html",  {})
+
+# def about_us(request):
+#     ip = request.META.get("REMOTE_ADDR")
+#     return render(request, "advertisement/about.html", {"ip_address": ip})
 
 
 def contact_us(request):
