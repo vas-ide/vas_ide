@@ -53,12 +53,8 @@ class Categories(TemplateView):
         context["name"] = "Categories"
         context["steps"] = "Standard diagnostic and treatment sheet"
         context["categories"] = [
-            "Delivery to clinic",
-            "Опрос и первичный осмотр",
-            "Диагностика и анализы",
-            "Вмешательство или процедуры",
-            "Вторичный анализ и осмотр",
-            "Delivery from clinic to home",
+            "Delivery to clinic", "Опрос и первичный осмотр", "Диагностика и анализы",
+            "Вмешательство или процедуры", "Вторичный анализ и осмотр", "Delivery from clinic to home",
         ]
         return context
 # def categories_us(request):
