@@ -2,10 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Categories</title>
+    <title>{{ title }}</title>
 </head>
 <body>
-<h1>Categories</h1>
-
+<h1>{{ name }}</h1>
+<h3>{{ steps }}</h3>
+<ul>
+    {% for category in categories  %}
+    <li>{{ category }}</li>
+    {% endfor %}
+</ul>
 </body>
 </html>
