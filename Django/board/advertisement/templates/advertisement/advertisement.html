@@ -2,13 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Index</title>
+    <title>{{title}}</title>
 </head>
 <body>
 <h1>Vas-atc-ide</h1>
-
+    <h1>{{ name }}</h1>
+    <p>{{ text }}</p>
 
 <ul>
+
     <h2><a href="https://skillbox.ru/">SkillBox----------</a><a href="skillbox_main.html">Test</a></h2>
     <li><a href="https://skillbox.ru/course/profession-python-onboarding/">Python - Skillbox----------</a><a href="python_main.html">Test</a></li>
 <!--    <li><a href="https://numpy.org/">Python - Numpy</a></li>-->
@@ -44,7 +46,8 @@
         <li></li>
         <li><a href="regions.html">Our regions</a></li>
     </ul>
-    <h6>You Ip address is {{ ip_address }}</h6>
+<!--    <h6>You Ip address is {{ ip_address }}</h6>-->
+    <h6>You Ip address is {{ ip }}</h6>
 </footer>
 </body>
 </html>

@@ -6,22 +6,20 @@ from django.http import HttpResponse
 from django.views.generic import TemplateView
 
 
-# def get_user_ip(request):
-#     # ip = request.META.get("REMOTE_ADDR")
-#     return render(request, "advertisement/advertisement.html", {"ip_address": ip})
-
 class Advertisement(TemplateView):
     template_name = "advertisement/advertisement.html"
 
     def get_context_data(self, **kwargs):
 
         context = super().get_context_data(**kwargs)
+        context["title"] = "Доска обьявлений-ADVERTISMENT"
         context["name"] = "Тестовый сайт по шаблонам джанго"
-        context["text"] = "Это первая страница не тестовом проекте board в тестовом приложении advertisement так-же тут  идут смешанные пробы Petdoctor в малом колличестве. Это стартовый макет первой версии"
+        context["text"] = "Это первая страница не тестовом проекте board в тестовом приложении advertisement так-же тут " \
+                          " идут смешанные пробы Petdoctor в малом колличестве. Это стартовый макет первой версии"
         return context
 
 
-# def advertisement_list(request, *args, **kwargs):
+# def advertisement(request, *args, **kwargs):
 #     ip = request.META.get("REMOTE_ADDR")
 #     advertisement = ["Delivery to clinic",
 #                      "Опрос и первичный осмотр",
