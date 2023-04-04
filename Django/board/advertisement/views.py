@@ -91,20 +91,11 @@ class Contacts(TemplateView):
         context["doctors"] = ["VKA"]
         context["personal"] = ["VAS"]
         context["car"] = ["Largus", "Rapid"]
-
         context["phone"] = "+7-999-632-50-22"
         context["email"] = "vas-atc@yandex.ru"
+        # context["ip"] = request.META.get("REMOTE_ADDR")
+        # context["ip"] = request.META.get("HTTP_X_FORWARDED_FOR")
         return context
-
-    # ip = request.META.get("REMOTE_ADDR")
-    # chip = ["Intel", "AMD"]
-    # video_chip = ["Intel", "AMD", "Nvidia"]
-    # ssd = ["Samsung", "WD"]
-    # return render(request, "advertisement/contacts.html", {
-    #     "ip_address": ip,
-    #     "chip": chip, "video_chip": video_chip, "ssd": ssd
-    # })
-
 
 class Regions(View):
 

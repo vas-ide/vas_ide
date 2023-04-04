@@ -2,12 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Contacts</title>
+    <title>{{ title }}</title>
 </head>
 <body>
-<h1>Contacts</h1>
+<h1>{{ name }}</h1>
 <div>
-    <h1>Pet-Doctor</h1>
     <h3>Специалисты медицинского профиля:</h3>
     <ol>
         {% for i in doctors%}
@@ -34,6 +33,7 @@
         <ul>
             <li>Phone: {{ phone }}</li>
             <li>Email: {{ email }}</li>
+<!--            <li>{{ ip }}</li>-->
         </ul>
     </div>
 </foter>
