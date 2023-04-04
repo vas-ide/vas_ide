@@ -2,10 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>{{ title }}</title>
 </head>
 <body>
-<h1>Hello, World!</h1>
+<h1>{{ name }}</h1>
+
+{% for person in all_workers %}
+<!--    <h3>№ {{forloop.counter}}   {{ person }}</h3>-->
+<h3>№ {{forloop.counter}}</h3>
+Фамилия: {{ person.second_name }}
+Имя: {{ person.name }}
+Зарплата:
+{% if person.salary < 25000 %}
+<b style="color: red">{{ person.salary }}</b>
+{% else %}
+<b style="color: blue">{{ person.salary }}</b>
+{% endif %}
+<br>
+{% endfor %}
+
 
 </body>
 </html>
