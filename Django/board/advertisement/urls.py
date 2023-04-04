@@ -14,7 +14,7 @@ urlpatterns = [
     # path("about.html/", views.about_us, name="about"),
     path("about.html/", views.About.as_view()),
     path("categories.html/", views.Categories.as_view()),
-    path("contacts.html/", views.contact_us, name="contact"),
+    path("contacts.html/", views.Contacts.as_view()),
     # path("regions.html/", views.regions_us, name="region"),
     path("regions.html/", views.Regions.as_view())
 ]

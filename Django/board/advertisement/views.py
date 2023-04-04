@@ -69,23 +69,41 @@ class Categories(TemplateView):
 #     return render(request, "advertisement/categories.html", {"ip_address": ip, "categories": categories})
 
 
-class About(View):
-    def get(self, request):
-        return render(request, "advertisement/about.html",  {})
-# def about_us(request):
-#     ip = request.META.get("REMOTE_ADDR")
-#     return render(request, "advertisement/about.html", {"ip_address": ip})
+class About(TemplateView):
+    template_name = "advertisement/about.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = "About"
+        context["name"] = "О Pet-Doctor."
+        return context
 
 
-def contact_us(request):
-    ip = request.META.get("REMOTE_ADDR")
-    chip = ["Intel", "AMD"]
-    video_chip = ["Intel", "AMD", "Nvidia"]
-    ssd = ["Samsung", "WD"]
-    return render(request, "advertisement/contacts.html", {
-        "ip_address": ip,
-        "chip": chip, "video_chip": video_chip, "ssd": ssd
-    })
+
+
+class Contacts(TemplateView):
+    template_name = "advertisement/contacts.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = "Contacts"
+        context["name"] = "Контактнаяя информация Pet-Doctor."
+        context["doctors"] = ["VKA"]
+        context["personal"] = ["VAS"]
+        context["car"] = ["Largus", "Rapid"]
+
+        context["phone"] = "+7-999-632-50-22"
+        context["email"] = "vas-atc@yandex.ru"
+        return context
+
+    # ip = request.META.get("REMOTE_ADDR")
+    # chip = ["Intel", "AMD"]
+    # video_chip = ["Intel", "AMD", "Nvidia"]
+    # ssd = ["Samsung", "WD"]
+    # return render(request, "advertisement/contacts.html", {
+    #     "ip_address": ip,
+    #     "chip": chip, "video_chip": video_chip, "ssd": ssd
+    # })
 
 
 class Regions(View):
@@ -106,8 +124,6 @@ class Regions(View):
 
     def post(self, request):
             print(f"Регион успешно создан")
-
-
 
 
 # def regions_us(request):

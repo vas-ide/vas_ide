@@ -7,27 +7,35 @@
 <body>
 <h1>Contacts</h1>
 <div>
-            <h1>Pet-Doctor</h1>
-    <ul>
-        <h3>PC</h3>
-        {% for item in chip %}
-            <li>Chip {{ item }}</li>
+    <h1>Pet-Doctor</h1>
+    <h3>Специалисты медицинского профиля:</h3>
+    <ol>
+        {% for i in doctors%}
+        <li> {{ i }}</li>
         {% endfor %}
-        {% for item in video_chip %}
-            <li>Video {{ item }}</li>
+    </ol>
+    <h3>Специалисты общего профиля:</h3>
+    <ol>
+        {% for i in personal%}
+        <li> {{ i }}</li>
         {% endfor %}
-        {% for item in ssd %}
-            <li>SSD {{ item }}</li>
+    </ol>
+    <h3>Auto</h3>
+    <ol>
+        {% for i in car%}
+        <li> {{ i }}</li>
         {% endfor %}
-    </ul>
-</div>
-<div>
-    <ul>
-        <h3>Service</h3>
-        <li>Phone - +7-999-632-50-22</li>
-        <li>Email - vas-atc@yandex.ru</li>
-    </ul>
-</div>
+    </ol>
 
+</div>
+<foter>
+    <div>
+        <h3>Service</h3>
+        <ul>
+            <li>Phone: {{ phone }}</li>
+            <li>Email: {{ email }}</li>
+        </ul>
+    </div>
+</foter>
 </body>
 </html>
