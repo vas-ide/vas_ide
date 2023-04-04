@@ -5,18 +5,32 @@ from django.views import View
 from django.http import HttpResponse
 from django.views.generic import TemplateView
 
+class Index(View):
+    template_name = "index.html"
 
-class Advertisement(TemplateView):
-    template_name = "advertisement/advertisement.html"
+    def get(self, request):
+        ip = request.META.get("REMOTE_ADDR")
+        regions = [
+            "Краснодарский Край",
+            "Краснодар",
+            "Ростовская Область",
+            "Ростов-на-Дону"
+            "Волгоградская Область",
+            "Волгоград",
+            "Ставропольский Край",
+            "Ставрополь",
+        ]
+        return render(request, "index.html", {"ip_address": ip, "regions": regions})
 
-    def get_context_data(self, **kwargs):
 
-        context = super().get_context_data(**kwargs)
-        context["title"] = "Доска обьявлений-ADVERTISMENT"
-        context["name"] = "Тестовый сайт по шаблонам джанго"
-        context["text"] = "Это первая страница не тестовом проекте board в тестовом приложении advertisement так-же тут " \
+class Advertisement(View):
+    def get(self, request):
+        title = "Доска обьявлений-ADVERTISMENT"
+        name = "Тестовый сайт по шаблонам джанго"
+        text = "Это первая страница не тестовом проекте board в тестовом приложении advertisement так-же тут " \
                           " идут смешанные пробы Petdoctor в малом колличестве. Это стартовый макет первой версии"
-        return context
+        ip = request.META.get("REMOTE_ADDR")
+        return render(request, "advertisement/advertisement.html", {"title": title, "name": name, "text": text, "ip": ip})
 
 
 # def advertisement(request, *args, **kwargs):
@@ -76,6 +90,9 @@ class About(TemplateView):
         context = super().get_context_data(**kwargs)
         context["title"] = "About"
         context["name"] = "О Pet-Doctor."
+        context["about"] = "Мы предоставляем большой спектр услуг в области ветеринарии. " \
+                           "У нас работают опытные дипломированные специалисты которые проведут " \
+                           "грамотную диагностику и окажут своевременоое лучение."
         return context
 
 
