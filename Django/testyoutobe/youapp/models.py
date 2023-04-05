@@ -7,3 +7,8 @@ class Worker(models.Model):
 
     def __str__(self):
         return f"{self.second_name} {self.name}"
+
+
+class SalesOrder(models.Model):
+    amount = models.IntegerField()
+    description = models.CharField(max_length=255)
