@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from rest_framework.viewsets import ModelViewSet
 
 from youapp.models import Worker, SalesOrder
 from urllib import request
@@ -8,7 +9,7 @@ from django.views import View
 from django.http import HttpResponse
 from django.views.generic import TemplateView
 
-
+from youapp.serializers import OrderSerializer
 
 
 class Index(TemplateView):
@@ -22,6 +23,11 @@ class Index(TemplateView):
         context["all_workers"] = Worker.objects.all()
         context["orders"] = SalesOrder.objects.all()
         return context
+
+class OrderViev(ModelViewSet):
+    queryset = SalesOrder.objects.all()
+    serializer_class = OrderSerializer
+
 
     # def index_page(request):
     #     # new_worker = Worker(name="Иван", second_name="Болванов", salary=15500)

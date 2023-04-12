@@ -52,6 +52,7 @@ MIDDLEWARE = [
     "board.middleware.filter_ip_middleware.FilterIpMiddlewareReject",
     "board.middleware.filter_ip_middleware.FilterIpMiddlewareNDelay",
     "board.middleware.filter_ip_middleware.FilterIpMiddlewareError",
+    "board.middleware.filter_ip_middleware.LogMiddleware"
 ]
 
 ROOT_URLCONF = 'board.urls'
@@ -59,7 +60,7 @@ ROOT_URLCONF = 'board.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ["templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

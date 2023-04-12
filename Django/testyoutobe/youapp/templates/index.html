@@ -23,12 +23,14 @@
 <br>
 {% endfor %}
 <h1>Sinior Pomidor</h1>
+<br>
 {% for order in orders %}
     <div class="btn btn-success btn-lg">
-    Цена:{{ order.amount }}
+        Цена:{{ order.amount }}
         <br>
         Вид услуги: {{ order.description }}
         </div>
+<br><br>
 {% endfor %}
 
 </body>

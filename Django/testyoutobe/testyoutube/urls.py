@@ -15,8 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework.routers import SimpleRouter
+
+from youapp.views import OrderViev
+
+router = SimpleRouter()
+
+router.register("api/youapp", OrderViev)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", include("youapp.urls")),
 ]
+
+
+urlpatterns += router.urls
