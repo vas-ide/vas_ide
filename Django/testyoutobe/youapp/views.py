@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from youapp.models import Worker
+from youapp.models import Worker, SalesOrder
 from urllib import request
 
 from django.shortcuts import render
@@ -20,6 +20,7 @@ class Index(TemplateView):
         context["title"] = "Index"
         context["name"] = "Клуб дедов програмистов & Синьёр помидор"
         context["all_workers"] = Worker.objects.all()
+        context["orders"] = SalesOrder.objects.all()
         return context
 
     # def index_page(request):
