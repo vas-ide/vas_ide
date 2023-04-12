@@ -59,8 +59,6 @@ class FilterIpMiddlewareError:
 class LogMiddleware:
     def __init__(self, get_response):
         self.get_response = get_response
-        self.counter = 0
-        self.time_start = None
 
     def __call__(self, request):
         ip = request.META.get("REMOTE_ADDR")
@@ -69,8 +67,5 @@ class LogMiddleware:
         with open("board/middleware/log/middleware-log.txt", "a", encoding="utf8") as code:
         # with open("middleware-log.txt", "a", encoding="utf8") as code:
             code.write(f"Ip:{ip}    Date & Time:{current_datetime}\n")
-        # self.counter += 0
-        # if self.counter % 4 == 1:
-        #     raise PermissionDenied
         response = self.get_response(request)
         return response
