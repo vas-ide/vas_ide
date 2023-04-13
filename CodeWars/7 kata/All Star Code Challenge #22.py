@@ -3,7 +3,19 @@
 
 
 def to_time(seconds):
-    return ''
+    result = seconds // 60
+    add_inf = 0
+    if result >= 60:
+        if result > 60:
+            add_inf = result % 60
+        result = result // 60
+    else:
+        add_inf = result
+        result = 0
+
+    print(f"{result} hour(s) and {add_inf} minute(s)")
+    return f"{result} hour(s) and {add_inf} minute(s)"
+
 
 
 to_time(3600)               #1 hour(s) and 0 minute(s)
