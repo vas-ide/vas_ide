@@ -7,7 +7,6 @@ from django.views.generic import TemplateView
 
 
 
-
 # class Leo(View):
 #     def get(self, request):
 #         ip = request.META.get("REMOTE_ADDR")

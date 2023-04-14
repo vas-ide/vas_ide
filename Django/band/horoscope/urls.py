@@ -3,23 +3,22 @@
 
 from django.contrib import admin
 from django.urls import path, include
-from horoscope import views
+from . import views
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('horoscope/aries', views.aries),
-    path('horoscope/taurus', views.taurus),
-    path('horoscope/gemini', views.gemini),
-    path('horoscope/cancer', views.cancer),
-    path('horoscope/leo', views.leo),
-    path('horoscope/virgo', views.virgo),
-    path('horoscope/libra', views.libra),
-    path('horoscope/scorpio', views.scorpio),
-    path('horoscope/sagittarius', views.sagittarius),
-    path('horoscope/capricorn', views.capricorn),
-    path('horoscope/aquarius', views.aquarius),
-    path('horoscope/pisces', views.pisces),
+    path('aries/', views.aries),
+    path('taurus/', views.taurus),
+    path('gemini/', views.gemini),
+    path('cancer/', views.cancer),
+    path('leo/', views.leo),
+    path('virgo/', views.virgo),
+    path('libra/', views.libra),
+    path('scorpio/', views.scorpio),
+    path('sagittarius/', views.sagittarius),
+    path('capricorn/', views.capricorn),
+    path('aquarius/', views.aquarius),
+    path('pisces/', views.pisces),
 
 
 ]
