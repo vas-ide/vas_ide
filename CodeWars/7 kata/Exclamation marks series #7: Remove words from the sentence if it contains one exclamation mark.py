@@ -3,24 +3,14 @@
 
 
 def remove(s):
-    counter = 0
-    new_word = ""
+    lst = s.split(" ")
     result = ""
-    for i in s:
-        if i == " ":
-            if counter != 1:
-                result += new_word
-            new_word = ""
-            counter = 0
-        elif i == "!":
-            counter += 1
-            new_word += i
-        else:
-            new_word += i
-    if len(new_word) > 0 and counter != 1:
-        result += new_word
-    print(result)
-    return result
+    for i in lst:
+        if i.count(f"!") != 1:
+            result += f"{i} "
+    print(result[:-1])
+    return result[:-1]
+
 
 
 
