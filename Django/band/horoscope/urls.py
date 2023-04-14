@@ -21,5 +21,4 @@ urlpatterns = [
     # path('aquarius/', views.aquarius),
     # path('pisces/', views.pisces),
 
-
 ]

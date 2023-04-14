@@ -1,7 +1,7 @@
 
 from django.shortcuts import render
 from django.views import View
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseNotFound
 from django.views.generic import TemplateView
 
 
@@ -31,6 +31,9 @@ def get_info_about_sign_zodiac(request, sign_zodiac):
         return HttpResponse("Aquarius - Водолей - Одиннадцатый знак Зодиака, планеты Уран и Сатурн(с 21 января по 19 февраля)")
     elif sign_zodiac == "pisces":
         return HttpResponse("Pisces - Рыбы - Двенадцатый знак зодиака, планета Юпитер(с 20 февраля по 20 марта)")
+    else:
+        return HttpResponseNotFound(f"Неизвестный адрес")
+
 # class Leo(View):
 #     def get(self, request):
 #         ip = request.META.get("REMOTE_ADDR")
