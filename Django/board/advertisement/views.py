@@ -21,7 +21,8 @@ class Index(View):
             "Ставропольский Край",
             "Ставрополь",
         ]
-        return render(request, "index.html", {"ip_address": ip, "regions": regions})
+        advertisements = Advertisement.objects.all()
+        return render(request, "index.html", {"ip_address": ip, "regions": regions, "advertisements": advertisements})
 
 
 class Advertisement(View):

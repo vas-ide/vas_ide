@@ -6,6 +6,21 @@
 </head>
 <body>
 <h1>INDEX</h1>
+<h3>Услуги</h3>
+{% if advertisement %}
+    <ul>
+        {% for advertisement in advertisements %}
+        <li>
+            {{ advertisement.title }} (Цена: {{ advertisement.price }})
+            <p>
+                Дата создания: {{ advertisement.created_at }}
+            </p>
+            <p>
+                Колличество просмотров: {{ advertisement.views_count }}
+            </p>
+        </li>
+        {% endfor %}
+    </ul>
 <footer>
     <h5><a href="advertisement.html">Main-page</a></h5>
 </footer>
