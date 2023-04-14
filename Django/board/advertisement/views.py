@@ -4,28 +4,18 @@ from django.shortcuts import render
 from django.views import View
 from django.http import HttpResponse
 from django.views.generic import TemplateView
+from advertisement.models import Advertisement
 
 
 class Index(View):
-    template_name = "index.html"
 
     def get(self, request):
         ip = request.META.get("REMOTE_ADDR")
-        regions = [
-            "Краснодарский Край",
-            "Краснодар",
-            "Ростовская Область",
-            "Ростов-на-Дону"
-            "Волгоградская Область",
-            "Волгоград",
-            "Ставропольский Край",
-            "Ставрополь",
-        ]
         advertisements = Advertisement.objects.all()
-        return render(request, "index.html", {"ip_address": ip, "regions": regions, "advertisements": advertisements})
+        return render(request, "index.html", {"ip_address": ip, "advertisements": advertisements})
 
 
-class Advertisement(View):
+class AdvertisementPage(View):
     def get(self, request):
         title = "Доска обьявлений-ADVERTISMENT"
         name = "Тестовый сайт по шаблонам джанго"

@@ -9,6 +9,8 @@ class Advertisement(models.Model):
     updated_at = models.DateTimeField(auto_now=True, verbose_name="Дата последнего обновления")
     price = models.FloatField(verbose_name="Цена", default=0)
     views_count = models.IntegerField(verbose_name="Колличество просмотров", default=0)
+    status = models.ForeignKey('AdvertisementStatus', default=None, null=True, on_delete=models.CASCADE,
+                               related_name="advertisements")
 
 
     def __str__(self):
@@ -17,3 +19,9 @@ class Advertisement(models.Model):
 
 
 
+
+class AdvertisementStatus(models.Model):
+    name = models.CharField(max_length=50, verbose_name="Название статуса")
+
+    def __str__(self):
+        return f"{self.name}"

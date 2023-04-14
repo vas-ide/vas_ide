@@ -5,9 +5,9 @@ from . import views
 
 urlpatterns = [
     path("", views.Index.as_view()),
-    path("advertisement/", views.Advertisement.as_view()),
-    path("advertisement/get/", views.Advertisement.as_view()),
-    path("advertisement/post/", views.Advertisement.as_view()),
+    path("advertisement/", views.AdvertisementPage.as_view()),
+    path("advertisement/get/", views.AdvertisementPage.as_view()),
+    path("advertisement/post/", views.AdvertisementPage.as_view()),
     path("advertisement/about.html/", views.About.as_view()),
     path("advertisement/categories.html/", views.Categories.as_view()),
     path("advertisement/regions.html/", views.Regions.as_view()),
