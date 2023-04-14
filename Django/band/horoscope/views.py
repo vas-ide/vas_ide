@@ -5,6 +5,10 @@ from django.http import HttpResponse, HttpResponseNotFound
 from django.views.generic import TemplateView
 
 
+# class Leo(View):
+#     def get(self, request):
+#         ip = request.META.get("REMOTE_ADDR")
+#         return render(request, "leo.html", {})
 
 def get_info_about_sign_zodiac(request, sign_zodiac):
     if sign_zodiac == "aries":
@@ -34,10 +38,6 @@ def get_info_about_sign_zodiac(request, sign_zodiac):
     else:
         return HttpResponseNotFound(f"Неизвестный адрес")
 
-# class Leo(View):
-#     def get(self, request):
-#         ip = request.META.get("REMOTE_ADDR")
-#         return render(request, "leo.html", {})
 # def aries(request):
 #     return HttpResponse("Aries - Овен - первый знак зодиака, планета Марс(с 21 марта по 20 апреля)")
 # def taurus(request):
