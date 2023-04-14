@@ -2,6 +2,8 @@ from django.db import models
 
 
 
+
+
 class Advertisement(models.Model):
     title = models.CharField(max_length=200, verbose_name="Название")
     description = models.CharField(max_length=2000, default="", verbose_name="Описание")
@@ -11,10 +13,15 @@ class Advertisement(models.Model):
     views_count = models.IntegerField(verbose_name="Колличество просмотров", default=0)
     status = models.ForeignKey('AdvertisementStatus', default=None, null=True, on_delete=models.CASCADE,
                                related_name="advertisements")
+    type = models.ForeignKey('AdvertisementType', default=None, null=True, on_delete=models.CASCADE,
+                               related_name="advertisements")
 
 
     def __str__(self):
         return f"Название:{self.title}    Описание:{self.description}"
+
+    class Meta:
+        db_table = "advertisements"
 
 
 
@@ -25,3 +32,14 @@ class AdvertisementStatus(models.Model):
 
     def __str__(self):
         return f"{self.name}"
+    class Meta:
+        db_table = "status"
+
+class AdvertisementType(models.Model):
+    name = models.CharField(max_length=50, verbose_name="Тип обьявления")
+
+    def __str__(self):
+        return f"{self.name}"
+
+    class Meta:
+        db_table = "type"
