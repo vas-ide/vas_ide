@@ -20,5 +20,4 @@ urlpatterns = [
     # path('capricorn/', views.capricorn),
     # path('aquarius/', views.aquarius),
     # path('pisces/', views.pisces),
-
 ]

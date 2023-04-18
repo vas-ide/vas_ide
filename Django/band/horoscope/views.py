@@ -1,14 +1,28 @@
-
 from django.shortcuts import render
 from django.views import View
 from django.http import HttpResponse, HttpResponseNotFound
 from django.views.generic import TemplateView
 
-
 # class Leo(View):
 #     def get(self, request):
 #         ip = request.META.get("REMOTE_ADDR")
 #         return render(request, "leo.html", {})
+
+zodiac_dict = {
+    "aries": "Aries - Овен - первый знак зодиака, планета Марс(с 21 марта по 20 апреля)",
+    "taurus": "Taurus - Телец - второй знак зодиака, планета Венера(с 21 апреля по 21 мая)",
+    "gemini": "Gemini - Близнецы - третий знак зодиака, планета Меркурий(с 22 мая по 21 июня)",
+    "cancer": "Canser - Рак - четвертый знак зодиака, Луна(с 22 июня по 22 июля)",
+    "leo": "Leo - Лев - пятый знак зодиака, Солнце(с 22 июля по 21 августа)",
+    "virgo": "Virgo - Дева - шестой знак зодиака, планета Меркурий(с 22 августа по 23 сентября)",
+    "libra": "Libra - Весы - седьмой знак зодиака, планета Венера(с 24 сентября по 23 октября)",
+    "scorpio": "Scorpio - Скорпион - восьмой знак зодиака, планета Марс(с 24 октября по 22 ноября)",
+    "sagittarius": "Sagittarius - Стрелец - девятый знак зодиака, планета Юпитер(с 23 ноября по 22 декабря)",
+    "capricorn": "Capricorn - Козерог - десятый знак зодиака, планета Сатурн(с 23 декабря по 20 января)",
+    "aquarius": "Aquarius - Водолей - Одиннадцатый знак Зодиака, планеты Уран и Сатурн(с 21 января по 19 февраля)",
+    "pisces": "Pisces - Рыбы - Двенадцатый знак зодиака, планета Юпитер(с 20 февраля по 20 марта)",
+}
+
 
 def get_info_about_sign_zodiac(request, sign_zodiac):
     if sign_zodiac == "aries":
@@ -32,7 +46,8 @@ def get_info_about_sign_zodiac(request, sign_zodiac):
     elif sign_zodiac == "capricorn":
         return HttpResponse("Capricorn - Козерог - десятый знак зодиака, планета Сатурн(с 23 декабря по 20 января)")
     elif sign_zodiac == "aquarius":
-        return HttpResponse("Aquarius - Водолей - Одиннадцатый знак Зодиака, планеты Уран и Сатурн(с 21 января по 19 февраля)")
+        return HttpResponse(
+            "Aquarius - Водолей - Одиннадцатый знак Зодиака, планеты Уран и Сатурн(с 21 января по 19 февраля)")
     elif sign_zodiac == "pisces":
         return HttpResponse("Pisces - Рыбы - Двенадцатый знак зодиака, планета Юпитер(с 20 февраля по 20 марта)")
     else:
@@ -62,5 +77,3 @@ def get_info_about_sign_zodiac(request, sign_zodiac):
 #     return HttpResponse("Aquarius - Водолей - Одиннадцатый знак Зодиака, планеты Уран и Сатурн(с 21 января по 19 февраля)")
 # def pisces(request):
 #     return HttpResponse("Pisces - Рыбы - Двенадцатый знак зодиака, планета Юпитер(с 20 февраля по 20 марта)")
-
-

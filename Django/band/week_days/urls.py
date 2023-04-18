@@ -5,5 +5,4 @@ from . import views
 
 urlpatterns = [
     path('<day_week>/', views.get_info_about_day),
-    path('tuesday/', views.get_info_about_day),
 ]
