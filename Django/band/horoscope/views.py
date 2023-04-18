@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views import View
-from django.http import HttpResponse, HttpResponseNotFound
+from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 from django.views.generic import TemplateView
 
 # class Leo(View):
@@ -34,8 +34,8 @@ def get_info_about_sign_zodiac(request, sign_zodiac: str):
 
 
 def get_info_about_sign_zodiac_by_number(request, sign_zodiac: int):
-    description = zodiac_dict.get(list(zodiac_dict.keys())[sign_zodiac - 1])
-    if description:
-        return HttpResponse(f"{description}")
+    if 0 < sign_zodiac < 13:
+        description = zodiac_dict.get(list(zodiac_dict.keys())[sign_zodiac - 1])
+        return HttpResponseRedirect(f"/horoscope/{description}")
     else:
-        return HttpResponseNotFound(f"Неизвестный знак зодиака")
+        return HttpResponseNotFound(f"Неизвестный номер знака зодиака {sign_zodiac}")
