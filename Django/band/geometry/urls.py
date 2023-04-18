@@ -4,6 +4,7 @@ from . import views
 
 
 urlpatterns = [
-    # path('<int:day_week>/', views.get_info_about_day_by_number),
-    # path('<str:day_week>/', views.get_info_about_day),
+    path('rectangle/<int:width>/<int:height>/', views.get_rectangle_area),
+    path('square/<int:width>/', views.get_square_area),
+    path('circle/<int:radius>/', views.get_circle_area),
 ]
