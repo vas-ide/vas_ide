@@ -1,12 +1,7 @@
 from django.shortcuts import render
 from django.views import View
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
-from django.views.generic import TemplateView
 
-# class Leo(View):
-#     def get(self, request):
-#         ip = request.META.get("REMOTE_ADDR")
-#         return render(request, "leo.html", {})
 
 zodiac_dict = {
     "aries": "Aries - Овен - первый знак зодиака, планета Марс(с 21 марта по 20 апреля)",
@@ -32,10 +27,8 @@ def get_info_about_sign_zodiac(request, sign_zodiac: str):
         return HttpResponseNotFound(f"Неизвестный знак зодиака {sign_zodiac}")
 
 
-
 def get_info_about_sign_zodiac_by_number(request, sign_zodiac: int):
-    if 0 < sign_zodiac < 13:
-        description = zodiac_dict.get(list(zodiac_dict.keys())[sign_zodiac - 1])
-        return HttpResponseRedirect(f"/horoscope/{description}")
-    else:
+    if sign_zodiac > len(zodiac_dict):
         return HttpResponseNotFound(f"Неизвестный номер знака зодиака {sign_zodiac}")
+    description = zodiac_dict.get(list(zodiac_dict.keys())[sign_zodiac - 1])
+    return HttpResponseRedirect(f"/horoscope/{description}")

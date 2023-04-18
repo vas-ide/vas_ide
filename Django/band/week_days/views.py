@@ -1,11 +1,16 @@
 from django.shortcuts import render
 from django.views import View
-from django.http import HttpResponse, HttpResponseNotFound
+from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 from django.views.generic import TemplateView
 
 week_days_dict = {
     "monday": "Погулять с ребенком.",
     "tuesday": "Погулять с ребенком.",
+    "wednesday": "Погулять с ребенком.",
+    "thursday": "Погулять с ребенком.",
+    "friday": "Погулять с ребенком.",
+    "saturday": "Погулять с ребенком.",
+    "sunday": "Погулять с ребенком.",
 }
 
 
@@ -18,8 +23,7 @@ def get_info_about_day(request, day_week: str):
 
 
 def get_info_about_day_by_number(request, day_week: int):
-    description = day_week
-    if 0 < description < 8:
-        return HttpResponse(f"Tooday is {description} week day!")
-    else:
+    if day_week > len(week_days_dict):
         return HttpResponseNotFound(f"В неделе всего 7 дней. Вы указали неправильный день - {day_week}")
+    return HttpResponseRedirect(f"/todo_week/{list(week_days_dict)[day_week - 1]}")
+
