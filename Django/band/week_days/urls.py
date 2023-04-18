@@ -4,5 +4,6 @@ from . import views
 
 
 urlpatterns = [
-    path('<day_week>/', views.get_info_about_day),
+    path('int:<day_week>/', views.get_info_about_day_by_number),
+    path('str:<day_week>/', views.get_info_about_day),
 ]

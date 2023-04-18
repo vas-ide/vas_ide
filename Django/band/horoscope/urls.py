@@ -1,13 +1,10 @@
-
-
-
 from django.contrib import admin
 from django.urls import path, include
 from . import views
 
-
 urlpatterns = [
-    path("<sign_zodiac>/", views.get_info_about_sign_zodiac)
+    path("<int:sign_zodiac>/", views.get_info_about_sign_zodiac_by_number),
+    path("<str:sign_zodiac>/", views.get_info_about_sign_zodiac),
     # path('aries/', views.aries),
     # path('taurus/', views.taurus),
     # path('gemini/', views.gemini),
