@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views import View
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
+from django.urls import reverse
 from django.views.generic import TemplateView
 
 week_days_dict = {
@@ -25,5 +26,6 @@ def get_info_about_day(request, day_week: str):
 def get_info_about_day_by_number(request, day_week: int):
     if day_week > len(week_days_dict):
         return HttpResponseNotFound(f"В неделе всего 7 дней. Вы указали неправильный день - {day_week}")
-    return HttpResponseRedirect(f"/todo_week/{list(week_days_dict)[day_week - 1]}")
+    redirect_url = reverse("day-name", args=[list(week_days_dict)[day_week - 1]],)
+    return HttpResponseRedirect(redirect_url)
 
