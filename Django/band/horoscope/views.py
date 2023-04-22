@@ -3,7 +3,6 @@ from django.views import View
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 from django.urls import reverse
 
-
 zodiac_dict = {
     "aries": "Aries - Овен - первый знак зодиака, планета Марс(с 21 марта по 20 апреля)",
     "taurus": "Taurus - Телец - второй знак зодиака, планета Венера(с 21 апреля по 21 мая)",
@@ -17,6 +16,13 @@ zodiac_dict = {
     "capricorn": "Capricorn - Козерог - десятый знак зодиака, планета Сатурн(с 23 декабря по 20 января)",
     "aquarius": "Aquarius - Водолей - Одиннадцатый знак Зодиака, планеты Уран и Сатурн(с 21 января по 19 февраля)",
     "pisces": "Pisces - Рыбы - Двенадцатый знак зодиака, планета Юпитер(с 20 февраля по 20 марта)",
+}
+
+zodiac_type = {
+    "fire": ["aries", "leo", "sagittarius"],
+    "earth": ["taurus", "virgo", "capricorn"],
+    "air": ["gemini", "libra", "aquarius"],
+    "water": ["cancer", "scorpio", "pisces"],
 }
 
 
@@ -33,6 +39,7 @@ def index(request):
     """
     return HttpResponse(result)
 
+
 def get_info_about_sign_zodiac(request, sign_zodiac: str):
     description = zodiac_dict.get(sign_zodiac)
     if description:
@@ -45,5 +52,5 @@ def get_info_about_sign_zodiac_by_number(request, sign_zodiac: int):
     if sign_zodiac > len(zodiac_dict):
         return HttpResponseNotFound(f"Неизвестный номер знака зодиака {sign_zodiac}")
     sign = list(zodiac_dict.keys())[sign_zodiac - 1]
-    redirect_url = reverse("horoscope-name", args=(sign, ))
+    redirect_url = reverse("horoscope-name", args=(sign,))
     return HttpResponseRedirect(redirect_url)
