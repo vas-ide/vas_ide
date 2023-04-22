@@ -40,6 +40,33 @@ def index(request):
     return HttpResponse(result)
 
 
+def type_zodiac(request):
+    zodiacs_type = list(zodiac_type)
+    li_elements = ""
+    for element in zodiacs_type:
+        redirect_url = reverse("zodiac_type", args=(element,))
+        li_elements += f"<li><a href='{redirect_url}'>{element.title()}</a></li>"
+    result = f"""
+    <ol>
+    {li_elements}
+    </ol>
+    """
+    return HttpResponse(result)
+
+
+def zodiac_elements_type(request, type_zodiac: str):
+    li_elements = ""
+    for element in zodiac_type[f"{type_zodiac}"]:
+        li_elements += f"<li><a>{element.title()}</a></li>"
+    result = f"""
+    <ol>
+    {li_elements}
+    </ol>
+    """
+
+    return HttpResponse(f"{result}")
+
+
 def get_info_about_sign_zodiac(request, sign_zodiac: str):
     description = zodiac_dict.get(sign_zodiac)
     if description:
