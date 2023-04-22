@@ -24,7 +24,8 @@ def index(request):
     zodiacs = list(zodiac_dict)
     li_elements = ""
     for sign in zodiacs:
-        li_elements += f"<li>{sign}</li>"
+        redirect_url = reverse("horoscope-name", args=(sign,))
+        li_elements += f"<li><a href='{redirect_url}'>{sign.title()}</a></li>"
     result = f"""
     <ol>
     {li_elements}
