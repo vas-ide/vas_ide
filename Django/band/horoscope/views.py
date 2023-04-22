@@ -57,11 +57,12 @@ def type_zodiac(request):
 def zodiac_elements_type(request, type_zodiac: str):
     li_elements = ""
     for element in zodiac_type[f"{type_zodiac}"]:
-        li_elements += f"<li><a>{element.title()}</a></li>"
+        redirect_url = reverse("horoscope-name", args=(element,))
+        li_elements += f"<li><a href='{redirect_url}'>{element.title()}</a></li>"
     result = f"""
-    <ol>
+    <ul>
     {li_elements}
-    </ol>
+    </ul>
     """
 
     return HttpResponse(f"{result}")
