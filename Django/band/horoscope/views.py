@@ -22,10 +22,15 @@ zodiac_dict = {
 
 def index(request):
     zodiacs = list(zodiac_dict)
-    rez = ""
+    li_elements = ""
     for sign in zodiacs:
-        rez += f"<li>{sign}</li>"
-    return HttpResponse(rez)
+        li_elements += f"<li>{sign}</li>"
+    result = f"""
+    <ol>
+    {li_elements}
+    </ol>
+    """
+    return HttpResponse(result)
 
 def get_info_about_sign_zodiac(request, sign_zodiac: str):
     description = zodiac_dict.get(sign_zodiac)
