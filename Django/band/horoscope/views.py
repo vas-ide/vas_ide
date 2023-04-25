@@ -69,8 +69,7 @@ def zodiac_elements_type(request, type_zodiac: str):
 
 
 def get_info_about_sign_zodiac(request, sign_zodiac: str):
-    response = render_to_string("horoscope/info_zodiac.html")
-    return HttpResponse(response)
+    return render(request, "horoscope/info_zodiac.html", {})
 
 
 

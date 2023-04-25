@@ -18,7 +18,7 @@ week_days_dict = {
 def get_info_about_day(request, day_week: str):
     description = week_days_dict.get(day_week)
     if description:
-        return HttpResponse(f"{day_week.capitalize()} - {description}")
+        return render(request, "week_days/greeting.html", {})
     else:
         return HttpResponseNotFound(f"Неизвестный адрес")
 
