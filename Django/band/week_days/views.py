@@ -38,3 +38,11 @@ def kianu_reeves(request):
     }
     return render(request, "week_days/keanu_reeves.html", context=data)
 
+def guinnes_world_records(request):
+    data = {
+        "power_man": "Narve Laeret",
+        "bar_name": "Bob's BBQ & Grill",
+        "count_needle": 1790,
+    }
+    return render(request, "week_days/guinnesswoldrecords.html", context=data)
+
