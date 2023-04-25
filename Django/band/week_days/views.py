@@ -26,6 +26,15 @@ def get_info_about_day(request, day_week: str):
 def get_info_about_day_by_number(request, day_week: int):
     if day_week > len(week_days_dict):
         return HttpResponseNotFound(f"В неделе всего 7 дней. Вы указали неправильный день - {day_week}")
-    redirect_url = reverse("day-name", args=[list(week_days_dict)[day_week - 1]],)
+    redirect_url = reverse("day-name", args=[list(week_days_dict)[day_week - 1]], )
     return HttpResponseRedirect(redirect_url)
+
+
+def kianu_reeves(request):
+    data = {
+        "year_born": 1964,
+        "city_born": "Beirut",
+        "movie_name": "Point Break",
+    }
+    return render(request, "week_days/keanu_reeves.html", context=data)
 
