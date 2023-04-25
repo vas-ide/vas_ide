@@ -2,13 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Horoscope for {{ horoscope_sign }}</title>
+    <title>Horoscope for {{ horoscope_sign|capfirst }}</title>
 </head>
 <body>
 <h1>Приложение Гороскоп</h1>
+{% if description_zodiac is None %}
+<h2>Неправильный знак зодиака - {{ horoscope_sign }}</h2>
+{% else %}
 <h2> {{ description_zodiac }},</h2>
+{% endif %}
 <footer>
-    <h6>Autor: {{  my_class }} age:{{  my_class.age }}</h6>
+    <h6>Autor: {{ my_class|upper }} {{ my_class.name|title }} age:{{ my_class.age|add:"-20"}}</h6>
 </footer>
 </body>
 </html>
