@@ -1,8 +1,13 @@
+{% load static%}
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <title>{% block title %} {% endblock %}</title>
+    {% block css_additional %} {% endblock %}
 </head>
 <body>
 <ul>
@@ -12,7 +17,6 @@
 </ul>
 </body>
 </html>
-
 
 
 <!--<ul>-->
