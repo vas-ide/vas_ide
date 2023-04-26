@@ -29,8 +29,9 @@ zodiac_type = {
 
 
 def index(request):
+    zodiacs = list(zodiac_dict)
     data = {
-        "horoscope": zodiac_dict
+        "zodiacs": zodiacs
     }
     return render(request, "horoscope/index.html", context=data)
 
