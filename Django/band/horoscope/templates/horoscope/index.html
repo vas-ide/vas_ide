@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu-Horoscope</title>
+</head>
+<body>
+<ul>
+  {% for sign in horoscope  %}
+  <li>{{ sign|title }}</li>
+  {% endfor %}
+</ul>
+<footer>
+    <h6>Autor: {{ my_class|upper }} {{ my_class.name|title }} age:{{ my_class.age|add:"-20"}}</h6>
+</footer>
+</body>
+</html>
