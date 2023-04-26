@@ -1,18 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Horoscope for {{ horoscope_sign|capfirst }}</title>
-</head>
-<body>
-<h1>Приложение Гороскоп</h1>
+{% extends 'base.html' %}
+
+{% block title %}
+Horoscope for {{ horoscope_sign|capfirst }}
+{% endblock %}
+
+{% block content %}
+<h2>Приложение Гороскоп</h2>
 {% if description_zodiac is None %}
 <h2>Неправильный знак зодиака - {{ horoscope_sign }}</h2>
 {% else %}
-<h2> {{ description_zodiac }},</h2>
+<h4> {{ description_zodiac }},</h4>
 {% endif %}
 <footer>
-    <h6>Autor: {{ my_class|upper }} {{ my_class.name|title }} age:{{ my_class.age|add:"-20"}}</h6>
+    <h6>Autor: {{ my_class|upper }} {{ my_class.name|capfirst }} age:{{ my_class.age|add:"-20"}}</h6>
 </footer>
-</body>
-</html>
+{% endblock %}

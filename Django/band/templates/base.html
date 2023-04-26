@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} {% endblock %}</title>
+</head>
+<body>
+<ul>
+
+    {% block content %} {% endblock %}
+
+</ul>
+</body>
+</html>
+
+
+
+<!--<ul>-->
+<!--    {% for zodiac in zodiacs %}-->
+<!--    {% if forloop.first %}-->
+<!--    <li style="color:red"><a href="/horoscope/{{ zodiac }}"><i><b>{{ forloop.counter }} {{ zodiac|title }}</b></i></a></li>-->
+<!--    {% elif forloop.last %}-->
+<!--    <li style="color:red"><a href="{{ zodiac }}"><i><b>{{ forloop.counter }} {{ zodiac|title }}</b></i></a></li>-->
+<!--    {% else %}-->
+<!--    <li><a href="{% url 'horoscope-name' sign_zodiac=zodiac %}">{{ forloop.counter }} {{ zodiac|title }}</a></li>-->
+<!--    {% endif %}-->
+<!--    {% endfor %}-->
+<!--</ul>-->

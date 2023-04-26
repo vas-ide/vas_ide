@@ -1,23 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Menu-Horoscope</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %}
+Menu-Horoscope
+{% endblock %}
+
+{% block content %}
 <ul>
     {% for zodiac in zodiacs %}
-    {% if forloop.first %}
-    <li style="color:red"><a href="/horoscope/{{ zodiac }}"><i><b>{{ forloop.counter }} {{ zodiac|title }}</b></i></a></li>
-    {% elif forloop.last %}
-    <li style="color:red"><a href="{{ zodiac }}"><i><b>{{ forloop.counter }} {{ zodiac|title }}</b></i></a></li>
-    {% else %}
-    <li><a href="{% url 'horoscope-name' sign_zodiac=zodiac %}">{{ forloop.counter }} {{ zodiac|title }}</a></li>
-    {% endif %}
+    <li><a href="{% url 'horoscope-name' sign_zodiac=zodiac %}">{{ zodiac|title }}</a></li>
     {% endfor %}
 </ul>
-<footer>
-    <h6>Autor: {{ my_class|upper }} {{ my_class.name|title }} age:{{ my_class.age|add:"-20"}}</h6>
-</footer>
-</body>
-</html>
+{% endblock %}
