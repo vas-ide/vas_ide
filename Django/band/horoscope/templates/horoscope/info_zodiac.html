@@ -5,6 +5,7 @@ Horoscope for {{ horoscope_sign|capfirst }}
 {% endblock %}
 
 {% block content %}
+{% include 'includes/navbar.html' %}
 <h2>Приложение Гороскоп</h2>
 {% if description_zodiac is None %}
 <h2>Неправильный знак зодиака - {{ horoscope_sign }}</h2>
