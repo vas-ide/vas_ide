@@ -4,5 +4,14 @@
 
 
 h2 {
-    color: blue;
+    color: #e8dede;
+    text-align: center;
+    font-family: "Andale Mono", AndaleMono, monospace;
+    font-size: 30px;
+    text-decoration: underline;
+}
+
+h4 {
+     text-align: center;
+
 }

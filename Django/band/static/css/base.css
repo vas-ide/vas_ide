@@ -5,7 +5,25 @@
 
 
 html {
-    color: grey;
+    background-color: grey;
 }
 
+
+
+nav {
+    text-align: center;
+    color: white;
+    font-size: 1rem;
+    height: 100%;
+    width: 70px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 20px;
+
+
+}
 

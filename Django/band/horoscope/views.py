@@ -2,7 +2,6 @@ from django.shortcuts import render
 from django.views import View
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 from django.urls import reverse
-from django.template.loader import render_to_string
 from dataclasses import dataclass
 
 zodiac_dict = {
@@ -72,11 +71,14 @@ class Person:
 
 
 def get_info_about_sign_zodiac(request, sign_zodiac: str):
+    zodiacs = list(zodiac_dict)
+
     description = zodiac_dict.get(sign_zodiac)
     data = {
         "description_zodiac": description,
         "horoscope_sign": sign_zodiac,
         "my_class": Person("alex", 36),
+        "zodiacs": zodiacs,
     }
     return render(request, "horoscope/info_zodiac.html", context=data)
 

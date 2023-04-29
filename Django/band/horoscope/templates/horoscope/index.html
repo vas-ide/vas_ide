@@ -11,10 +11,16 @@ Menu-Horoscope
 {% endblock %}
 
 {% block content %}
-{% include 'includes/navbar.html' %}
+
+<h1>Horoscope</h1>
+
+
 <ul>
     {% for zodiac in zodiacs %}
     <li><a href="{% url 'horoscope-name' sign_zodiac=zodiac %}">{{ zodiac|title }}</a></li>
     {% endfor %}
 </ul>
 {% endblock %}
+
+{% block footer %} {% endblock %}
+

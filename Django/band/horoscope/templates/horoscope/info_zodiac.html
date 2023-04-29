@@ -10,14 +10,21 @@ Horoscope for {{ horoscope_sign|capfirst }}
 {% endblock %}
 
 {% block content %}
-{% include 'includes/navbar.html' %}
-<h2>Приложение Гороскоп</h2>
+<h2>Гороскоп на  {{ horoscope_sign|title }}</h2>
 {% if description_zodiac is None %}
 <h2>Неправильный знак зодиака - {{ horoscope_sign }}</h2>
 {% else %}
 <h4> {{ description_zodiac }},</h4>
 {% endif %}
-<footer>
-    <h6>Autor: {{ my_class|upper }} {{ my_class.name|capfirst }} age:{{ my_class.age|add:"-20"}}</h6>
-</footer>
+
+
+
+
+{% endblock %}
+
+
+{% block footer %}
+
+{% include 'includes/navbar.html' %}
+<!--    <h6>Autor: {{ my_class|upper }} {{ my_class.name|capfirst }} age:{{ my_class.age|add:"-20"}}</h6>-->
 {% endblock %}
