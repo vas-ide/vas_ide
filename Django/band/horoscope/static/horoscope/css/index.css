@@ -15,12 +15,17 @@ ul {
     padding: 1px;
 }
 
-li {
+ul li {
    text-align: center;
    width: 100%;
    font-size: 3rem;
    padding: 2rem 1 rem;
 
+}
+
+
+ul a:hover, ul a:active {
+color: #eca8b5;
 }
 
 

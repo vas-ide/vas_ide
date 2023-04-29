@@ -1,10 +1,15 @@
 {% extends 'base.html' %}
 
+
+{% load static%}
+{% load my_filter%}
+
+
+
 {% block title %}
 Horoscope for {{ horoscope_sign|capfirst }}
 {% endblock %}
 
-{% load static%}
 {% block css_additional %}
 <link rel="stylesheet" href="{% static 'horoscope/css/info.css' %}">
 {% endblock %}
@@ -14,17 +19,11 @@ Horoscope for {{ horoscope_sign|capfirst }}
 {% if description_zodiac is None %}
 <h2>Неправильный знак зодиака - {{ horoscope_sign }}</h2>
 {% else %}
-<h4> {{ description_zodiac }},</h4>
+<h4> {{ description_zodiac }}</h4>
 {% endif %}
-
-
-
-
 {% endblock %}
 
-
 {% block footer %}
-
 {% include 'includes/navbar.html' %}
 <!--    <h6>Autor: {{ my_class|upper }} {{ my_class.name|capfirst }} age:{{ my_class.age|add:"-20"}}</h6>-->
 {% endblock %}
