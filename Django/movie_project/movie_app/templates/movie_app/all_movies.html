@@ -2,7 +2,6 @@
 
 {% extends 'movie_app/base.html' %}
 
-
 {% block title %}Movies{% endblock %}
 
 
@@ -10,11 +9,11 @@
 <h1>Список одобренных фильмов</h1>
 <ul>
  {% for movie in movies %}
- <li>{{ movie.name }}, рейтинг - {{ movie.rating }}, год выпуска - {{  movie.year|default:"Неизвестен" }}</li>
+ <li><a href="{{ movie.get_url }}">{{ movie.name }}</a>, рейтинг - {{ movie.rating }}, год выпуска - {{ movie.year|default:"Неизвестен" }}</li>
  {% endfor %}
 </ul>
-
 {% endblock %}
 
-
- {% block footer %}<h6>Footer</h6>{% endblock %}
+{% block footer %}
+<h6>Footer</h6>
+{% endblock %}
