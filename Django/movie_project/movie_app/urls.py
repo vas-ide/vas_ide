@@ -1,10 +1,9 @@
 
-
-from django.urls import path, include
 from . import views
+from django.urls import path
 
 urlpatterns = [
-    # path("", views.index, name="horoscope-index"),
+    path("", views.show_all_movies, name="all-movies"),
     # path("type", views.type_zodiac),
     # path("type/<str:type_zodiac>", views.zodiac_elements_type, name="zodiac_type"),
     # path("<int:sign_zodiac>", views.get_info_about_sign_zodiac_by_number),

@@ -1,13 +1,18 @@
 
 
-{% extends 'movie_asp/base.html' %}
+{% extends 'movie_app/base.html' %}
 
 
-{% block title %} <h1>Movies</h1>{% endblock %}
+{% block title %}Movies{% endblock %}
 
 
 {% block content %}
 <h1>Список одобренных фильмов</h1>
+<ul>
+ {% for movie in movies %}
+ <li>{{ movie.name }}, рейтинг - {{ movie.rating }}, год выпуска - {{  movie.year|default:"Неизвестен" }}</li>
+ {% endfor %}
+</ul>
 
 {% endblock %}
 
