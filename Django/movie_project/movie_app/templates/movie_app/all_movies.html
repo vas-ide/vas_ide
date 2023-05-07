@@ -6,7 +6,7 @@
 
 
 {% block content %}
-<h1>Список одобренных фильмов</h1>
+<h1>Список фильмов</h1>
 <ul>
  {% for movie in movies %}
  <li><a href="{{ movie.get_url }}">{{ movie.name }}</a>, рейтинг - {{ movie.rating }}, год выпуска - {{ movie.year|default:"Неизвестен" }}</li>
