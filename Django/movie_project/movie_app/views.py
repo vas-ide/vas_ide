@@ -11,7 +11,9 @@ def show_all_movies(request):
 
     content = {
         # 'movies': Movie.objects.all(),
-        'movies': Movie.objects.order_by('name')
+        # 'movies': Movie.objects.order_by('-rating', 'budget'),
+        'movies': Movie.objects.order_by('name'),
+        # 'movies': Movie.objects.order_by('-name')[:5],
     }
     return render(request, "movie_app/all_movies.html", content)
 
