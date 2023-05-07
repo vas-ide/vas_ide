@@ -5,11 +5,13 @@ from .models import Movie
 
 def show_all_movies(request):
     movies = Movie.objects.all()
+
     for slug in movies:
         slug.save()
 
     content = {
-        'movies': Movie.objects.all(),
+        # 'movies': Movie.objects.all(),
+        'movies': Movie.objects.order_by('name')
     }
     return render(request, "movie_app/all_movies.html", content)
 

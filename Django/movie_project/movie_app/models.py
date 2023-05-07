@@ -8,7 +8,7 @@ class Movie(models.Model):
     year = models.IntegerField(null=True)
     rating = models.IntegerField()
     budget = models.IntegerField(default="0")
-    slug = models.SlugField(default='', null=False)
+    slug = models.SlugField(default='', null=False, db_index=True)
 
 
     def save(self, *args, **kwargs):
