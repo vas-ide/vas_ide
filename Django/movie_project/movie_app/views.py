@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from django.db.models import F
+from django.db.models import F, Sum, Min, Max, Count, Avg
 from .models import Movie
 
 
