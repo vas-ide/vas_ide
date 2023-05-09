@@ -17,6 +17,7 @@ def show_all_movies(request):
         # 'movies': Movie.objects.order_by(F('budget').asc()),
         # 'movies': Movie.objects.order_by(F('budget').desc(nulls_last=True)),
         'movies': Movie.objects.order_by(F('budget').desc(nulls_first=True)),
+        'total_and_max': movies.aggregate(Avg('budget'), Avg('rating'))
     }
     return render(request, "movie_app/all_movies.html", content)
 
