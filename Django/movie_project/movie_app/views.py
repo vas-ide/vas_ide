@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-
+from django.db.models import F
 from .models import Movie
 
 
@@ -11,9 +11,12 @@ def show_all_movies(request):
 
     content = {
         # 'movies': Movie.objects.all(),
+        # 'movies': Movie.objects.order_by('name'),
         # 'movies': Movie.objects.order_by('-rating', 'budget'),
-        'movies': Movie.objects.order_by('name'),
         # 'movies': Movie.objects.order_by('-name')[:5],
+        # 'movies': Movie.objects.order_by(F('budget').asc()),
+        # 'movies': Movie.objects.order_by(F('budget').desc(nulls_last=True)),
+        'movies': Movie.objects.order_by(F('budget').desc(nulls_first=True)),
     }
     return render(request, "movie_app/all_movies.html", content)
 
