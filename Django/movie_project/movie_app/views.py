@@ -18,10 +18,11 @@ def show_all_movies(request):
         # 'movies': Movie.objects.order_by(F('budget').desc(nulls_last=True)),
         # 'movies': Movie.objects.order_by(F('budget').desc(nulls_first=True)),
         'movies': Movie.objects.annotate(
-            true_bool=Value(True),
-            false_bool=Value(False),
-            string_annotate=Value('Movie'),
-            int_annotate=Value('8654'),
+            # true_bool=Value(True),
+            # false_bool=Value(False),
+            # string_annotate=Value('Movie'),
+            # int_annotate=Value('8654'),
+            rub_budget=F('budget')*75
         ),
         'total_and_max': movies.aggregate(Avg('budget'), Avg('rating'), Count('id'))
     }
