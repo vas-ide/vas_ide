@@ -13,7 +13,7 @@ class MovieAdmin(admin.ModelAdmin):
     ordering = ["year", "-rating"]
     list_per_page = 5
 
-
+    @admin.display(ordering='rating')
     def rating_status(self, movie: Movie):
         if movie.rating <= 50:
             return f"Fail."
