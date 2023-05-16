@@ -14,6 +14,7 @@ class MovieAdmin(admin.ModelAdmin):
     ordering = ["year", "-rating"]
     list_per_page = 15
     actions = ["set_dollars", "set_euro"]
+    search_fields = ["name"]
 
     @admin.display(ordering='rating', description='Оценка')
     def rating_status(self, movie: Movie):
