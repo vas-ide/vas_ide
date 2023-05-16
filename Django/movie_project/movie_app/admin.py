@@ -11,7 +11,7 @@ class MovieAdmin(admin.ModelAdmin):
     list_display = ["name", "year", "budget", "currency", "rating",   "rating_status"]
     list_editable = ["year", "currency", "rating"]
     ordering = ["year", "-rating"]
-    list_per_page = 5
+    list_per_page = 15
 
     @admin.display(ordering='rating', description='Оценка')
     def rating_status(self, movie: Movie):
