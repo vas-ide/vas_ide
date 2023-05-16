@@ -35,8 +35,9 @@ class RatingFilter(admin.SimpleListFilter):
 @admin.register(Movie)
 class MovieAdmin(admin.ModelAdmin):
     # fields = ["name", "rating"]
-    exclude = ["slug"]
-    readonly_fields = ["year"]
+    # exclude = ["slug"]
+    # readonly_fields = ["year"]
+    prepopulated_fields = {"slug": ("name", )}
     list_display = ["name", "year", "budget", "currency", "rating",   "rating_status"]
     list_editable = ["year", "currency", "rating"]
     ordering = ["year", "-rating"]
