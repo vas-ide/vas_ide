@@ -4,11 +4,14 @@ from django.utils.text import slugify
 
 
 class Movie(models.Model):
+    EUR = "EUR"
+    USD = "USD"
+    RUB = "RUB"
 
     CURRENCY_CHOICES = [
-        ('EUR', 'Euro'),
-        ('USD', 'Dollar-US'),
-        ('RUB', 'Rubles'),
+        (EUR, 'Euro'),
+        (USD, 'Dollar-US'),
+        (RUB, 'Rubles'),
     ]
 
     name = models.CharField(max_length=100)
