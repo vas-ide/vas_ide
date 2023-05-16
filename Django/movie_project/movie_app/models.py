@@ -4,10 +4,18 @@ from django.utils.text import slugify
 
 
 class Movie(models.Model):
+
+    CURRENCY_CHOICES = [
+        ('EUR', 'Euro'),
+        ('USD', 'Dollar-US'),
+        ('RUB', 'Rubles'),
+    ]
+
     name = models.CharField(max_length=100)
     year = models.IntegerField(null=True, blank=True )
     rating = models.IntegerField()
-    budget = models.IntegerField(default="0")
+    budget = models.IntegerField(default='0')
+    currency = models.CharField(max_length=3, choices=CURRENCY_CHOICES, default='USD')
     slug = models.SlugField(default='', null=False, db_index=True)
 
 
@@ -16,7 +24,7 @@ class Movie(models.Model):
         super(Movie, self).save(*args, **kwargs)
 
     def get_url(self):
-        return reverse('one-movie', args=[self.slug ])
+        return reverse('one-movie', args=[self.slug])
 
     def __str__(self):
         return f"{self.name}-{self.year}-{self.rating}"

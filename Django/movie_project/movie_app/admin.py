@@ -8,12 +8,12 @@ from .models import Movie
 # or
 @admin.register(Movie)
 class MovieAdmin(admin.ModelAdmin):
-    list_display = ["name", "year", "rating", "rating_status"]
-    list_editable = ["year", "rating"]
+    list_display = ["name", "year", "budget", "currency", "rating",   "rating_status"]
+    list_editable = ["year", "currency", "rating"]
     ordering = ["year", "-rating"]
     list_per_page = 5
 
-    @admin.display(ordering='rating')
+    @admin.display(ordering='rating', description='Оценка')
     def rating_status(self, movie: Movie):
         if movie.rating <= 50:
             return f"Fail."
