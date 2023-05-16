@@ -1,8 +1,9 @@
 from django.contrib import admin, messages
-from .models import Movie
+from .models import Movie, Director
 from django.db.models import QuerySet
 
 
+admin.site.register(Director)
 # class MovieAdmin(admin.ModelAdmin):
 #     list_display = ["name", "year", "rating"]
 # admin.site.register(Movie, MovieAdmin)
@@ -28,8 +29,6 @@ class RatingFilter(admin.SimpleListFilter):
             return queryset.filter(rating__gte=60).filter(rating__lt=80)
         elif self.value() == ">=80":
             return queryset.filter(rating__gt=79)
-
-
 
 
 @admin.register(Movie)
