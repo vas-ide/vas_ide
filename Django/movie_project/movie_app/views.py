@@ -22,7 +22,7 @@ def show_all_movies(request):
             # false_bool=Value(False),
             # string_annotate=Value('Movie'),
             # int_annotate=Value('8654'),
-            rub_budget=F('budget')*75
+            rub_budget=F('budget') * 75
         ),
         'total_and_max': movies.aggregate(Avg('budget'), Avg('rating'), Count('id'))
     }
@@ -49,29 +49,15 @@ def show_all_directors(request):
         slug.save()
 
     content = {
-        # 'movies': Movie.objects.all(),
-        # 'movies': Movie.objects.order_by('name'),
-        # 'movies': Movie.objects.order_by('-rating', 'budget'),
-        # 'movies': Movie.objects.order_by('-name')[:5],
-        # 'movies': Movie.objects.order_by(F('budget').asc()),
-        # 'movies': Movie.objects.order_by(F('budget').desc(nulls_last=True)),
-        # 'movies': Movie.objects.order_by(F('budget').desc(nulls_first=True)),
-        'movies': Movie.objects.annotate(
-            # true_bool=Value(True),
-            # false_bool=Value(False),
-            # string_annotate=Value('Movie'),
-            # int_annotate=Value('8654'),
-            rub_budget=F('budget')*75
-        ),
-        'total_and_max': movies.aggregate(Avg('budget'), Avg('rating'), Count('id'))
+        'directors': Director.objects.all(),
     }
-    return render(request, "movie_app/all_movies.html", content)
+    return render(request, "movie_app/all_directors.html", content)
 
 
 def show_one_director(request, slug_movie: str):
-    error404 = get_object_or_404(Movie, slug=slug_movie)
+    error404 = get_object_or_404(Movie, slug=slug_director)
     content = {
-        'movies': Movie.objects.all(),
-        'movie': Movie.objects.get(slug=slug_movie),
+        'directors': Director.objects.all(),
+        'director': Director.objects.get(slug=slug_director),
     }
-    return render(request, "movie_app/one_movie.html", content)
+    return render(request, "movie_app/one_director.html", content)

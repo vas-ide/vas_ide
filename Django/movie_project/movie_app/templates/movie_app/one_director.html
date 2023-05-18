@@ -1,0 +1,16 @@
+
+
+{% extends 'movie_app/base.html' %}
+
+
+{% block title %} Director-information{% endblock %}
+
+
+{% block content %}
+<h3>{{ director.first_name }} {{ director.second_name }}</h3>
+{% endblock %}
+
+
+ {% block footer %}
+<h6>{{ director_email }}</h6>
+{% endblock %}

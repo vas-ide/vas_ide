@@ -14,7 +14,7 @@ class Director(models.Model):
         super(Director, self).save(*args, **kwargs)
 
     def get_url(self):
-        return reverse('one-movie', args=[self.slug])
+        return reverse('one-director', args=[self.slug])
 
     def __str__(self):
         return f"{self.first_name} {self.second_name}"
@@ -23,6 +23,7 @@ class Actor(models.Model):
     first_name = models.CharField(max_length=50, blank=True)
     second_name = models.CharField(max_length=50, default="unknown")
     actor_email = models.EmailField(blank=True, default="vas-atc@yandex.ru")
+    slug = models.SlugField(default='', null=False, db_index=True)
 
 
     def save(self, *args, **kwargs):
@@ -30,7 +31,7 @@ class Actor(models.Model):
         super(Actor, self).save(*args, **kwargs)
 
     def get_url(self):
-        return reverse('one-movie', args=[self.slug])
+        return reverse('one-actor', args=[self.slug])
 
     def __str__(self):
         return f"{self.first_name} {self.second_name}"

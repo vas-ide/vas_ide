@@ -1,0 +1,16 @@
+
+
+{% extends 'movie_app/base.html' %}
+
+
+{% block title %} All Directors {% endblock %}
+
+
+{% block content %}
+ {% for director in directors %}
+ <li><a href="{{ director.get_url }}">{{ director.first_name }} {{ director.second_name }}</a>,</li>
+ {% endfor %}
+{% endblock %}
+
+
+ {% block footer %} {% endblock %}

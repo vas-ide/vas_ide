@@ -5,8 +5,8 @@ from django.urls import path
 urlpatterns = [
     path("", views.show_all_movies, name="all-movies"),
     path("movie/<slug:slug_movie>", views.show_one_movie, name="one-movie"),
-    path("director/", views.show_all_movies, name="all-director"),
-    path("director/<slug:slug_director>", views.show_one_movie, name="one-director"),
+    path("directors/", views.show_all_directors, name="all-director"),
+    path("director/<slug:slug_director>", views.show_one_director, name="one-director"),
     # path("type", views.type_zodiac),
     # path("type/<str:type_zodiac>", views.zodiac_elements_type, name="zodiac_type"),
     # path("<int:sign_zodiac>", views.get_info_about_sign_zodiac_by_number),
