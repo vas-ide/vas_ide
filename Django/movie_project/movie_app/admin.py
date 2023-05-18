@@ -1,9 +1,10 @@
 from django.contrib import admin, messages
-from .models import Movie, Director
+from .models import Movie, Director, Actor
 from django.db.models import QuerySet
 
 
 admin.site.register(Director)
+admin.site.register(Actor)
 # class MovieAdmin(admin.ModelAdmin):
 #     list_display = ["name", "year", "rating"]
 # admin.site.register(Movie, MovieAdmin)
@@ -37,8 +38,8 @@ class MovieAdmin(admin.ModelAdmin):
     # exclude = ["slug"]
     # readonly_fields = ["year"]
     prepopulated_fields = {"slug": ("name", )}
-    list_display = ["name", "year", "budget", "currency", "rating",   "rating_status"]
-    list_editable = ["year", "currency", "rating"]
+    list_display = ["name", "director", "year", "budget", "currency", "rating",   "rating_status"]
+    list_editable = ["year", "director", "currency", "rating"]
     ordering = ["year", "-rating"]
     list_per_page = 15
     actions = ["set_dollars", "set_euro"]
