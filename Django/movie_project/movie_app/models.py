@@ -37,10 +37,11 @@ class Movie(models.Model):
     currency = models.CharField(max_length=3, choices=CURRENCY_CHOICES, default=USD)
     slug = models.SlugField(default='', null=False, db_index=True)
     director = models.ForeignKey(Director, on_delete=models.PROTECT, null=True, blank=True)
+    actor = models.ForeignKey(Actor, on_delete=models.PROTECT, null=True, blank=True)
     # on_delete=models.PROTECT
     # on_delete=models.CASCADE
     # on_delete=models.SET_NULL
-    actor = models.ForeignKey(Actor, on_delete=models.PROTECT, null=True, blank=True)
+
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)

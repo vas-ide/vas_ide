@@ -38,8 +38,8 @@ class MovieAdmin(admin.ModelAdmin):
     # exclude = ["slug"]
     # readonly_fields = ["year"]
     prepopulated_fields = {"slug": ("name", )}
-    list_display = ["name", "director", "year", "budget", "currency", "rating",   "rating_status"]
-    list_editable = ["year", "director", "currency", "rating"]
+    list_display = ["name", "director", "actor", "year", "budget", "currency", "rating",   "rating_status"]
+    list_editable = ["year", "director", "actor", "currency", "rating"]
     ordering = ["year", "-rating"]
     list_per_page = 15
     actions = ["set_dollars", "set_euro"]
