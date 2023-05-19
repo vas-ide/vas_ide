@@ -7,10 +7,11 @@ class Director(models.Model):
     first_name = models.CharField(max_length=50, blank=True)
     second_name = models.CharField(max_length=50, default="unknown")
     director_email = models.EmailField(blank=True, default="vas-atc@yandex.ru")
-    slug = models.SlugField(default='', null=False, db_index=True)
+    # slug = models.SlugField(default='', null=False, db_index=True)
+    slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name="URL")
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.first_name, self.second_name)
+        self.slug = '-'.join((slugify(self.first_name), slugify(self.second_name), slugify(self.id)))
         super(Director, self).save(*args, **kwargs)
 
     def get_url(self):
@@ -23,12 +24,12 @@ class Actor(models.Model):
     first_name = models.CharField(max_length=50, blank=True)
     second_name = models.CharField(max_length=50, default="unknown")
     actor_email = models.EmailField(blank=True, default="vas-atc@yandex.ru")
-    slug = models.SlugField(default='', null=False, db_index=True)
-
+    # slug = models.SlugField(default='', null=False, db_index=True)
+    slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name="URL")
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.first_name, self.second_name)
-        super(Actor, self).save(*args, **kwargs)
+        self.slug = '-'.join((slugify(self.first_name), slugify(self.second_name), slugify(self.id)))
+        super(Director, self).save(*args, **kwargs)
 
     def get_url(self):
         return reverse('one-actor', args=[self.slug])

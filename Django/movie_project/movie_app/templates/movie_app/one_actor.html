@@ -1,0 +1,16 @@
+
+
+{% extends 'movie_app/base.html' %}
+
+
+{% block title %} Actor-information{% endblock %}
+
+
+{% block content %}
+<h3>{{ actor.first_name }} {{ actor.second_name }}</h3>
+{% endblock %}
+
+
+{% block footer %}
+<h6>{{ actor.actor_email }}</h6>
+{% endblock %}
