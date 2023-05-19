@@ -44,6 +44,8 @@ def show_one_movie(request, slug_movie: str):
 
 def show_all_directors(request):
     directors = Director.objects.all()
+    for slug in directors:
+        slug.save()
     content = {
         'directors': Director.objects.all(),
     }
@@ -60,6 +62,9 @@ def show_one_director(request, slug_director: str):
 
 def show_all_actors(request):
     actors = Actor.objects.all()
+
+    for slug in actors:
+        slug.save()
     content = {
         'actors': Actor.objects.all(),
     }
@@ -69,7 +74,7 @@ def show_all_actors(request):
 def show_one_actor(request, slug_actor: str):
     error404 = get_object_or_404(Actor, slug=slug_actor)
     content = {
-        'directors': Actor.objects.all(),
-        'director': Actor.objects.get(slug=slug_actor),
+        'actors': Actor.objects.all(),
+        'actor': Actor.objects.get(slug=slug_actor),
     }
     return render(request, "movie_app/one_actor.html", content)

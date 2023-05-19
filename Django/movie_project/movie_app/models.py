@@ -29,7 +29,7 @@ class Actor(models.Model):
 
     def save(self, *args, **kwargs):
         self.slug = '-'.join((slugify(self.first_name), slugify(self.second_name), slugify(self.id)))
-        super(Director, self).save(*args, **kwargs)
+        super(Actor, self).save(*args, **kwargs)
 
     def get_url(self):
         return reverse('one-actor', args=[self.slug])
