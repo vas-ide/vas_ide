@@ -9,6 +9,16 @@
 {% block content %}
 <h3>Имя: {{ actor.first_name }} Фамилия: {{ actor.second_name }}</h3>
 <p>Пол: {{ actor.gender }}</p>
+<hr>
+<h5>Список Фильмов</h5>
+<ul>
+    <!--    {% for movie in actor.movie_set.all %}-->
+    <!--        {% endfor %}-->
+    {% for movie in actor.movie_set.all %}
+    <li><a href="{{ movie.get_url }}">{{ movie }}</a></li>
+    {% endfor %}
+</ul>
+<hr>
 {% endblock %}
 
 

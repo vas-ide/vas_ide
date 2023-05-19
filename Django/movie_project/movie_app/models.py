@@ -4,6 +4,14 @@ from django.utils.text import slugify
 from django.core.validators import MaxValueValidator, MinValueValidator
 
 
+class DressingRoom(models.Model):
+    floor = models.IntegerField(blank=True)
+    number_room = models.IntegerField(blank=True)
+
+    def __str__(self):
+        return f"Floor:{self.floor} Room-{self.number_room}"
+
+
 class Director(models.Model):
     first_name = models.CharField(max_length=50, blank=True)
     second_name = models.CharField(max_length=50, default="unknown")
@@ -34,6 +42,7 @@ class Actor(models.Model):
     second_name = models.CharField(max_length=50, default="unknown")
     actor_email = models.EmailField(blank=True, default="vas-atc@yandex.ru")
     gender = models.CharField(max_length=1, choices=GENDERS, blank=True)
+    dresing = models.OneToOneField(DressingRoom, on_delete=models.SET_NULL, null=True, blank=True)
     # slug = models.SlugField(default='', null=False, db_index=True)
     slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name="URL")
 
@@ -68,7 +77,7 @@ class Movie(models.Model):
     budget = models.IntegerField(default='0', blank=True, validators=[MinValueValidator(1)])
     currency = models.CharField(max_length=3, choices=CURRENCY_CHOICES, default=USD)
     slug = models.SlugField(default='', null=False, db_index=True)
-    director = models.ForeignKey(Director, on_delete=models.PROTECT, null=True, blank=True)
+    director = models.ForeignKey(Director, on_delete=models.PROTECT, null=True, blank=True, related_name="movies")
     actors = models.ManyToManyField(Actor)
 
     # on_delete=models.PROTECT
