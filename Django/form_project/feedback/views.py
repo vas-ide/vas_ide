@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+from django.http import HttpResponseRedirect
 
 def index(request):
     context = {}
@@ -20,3 +20,4 @@ def hello(request):
         "feedback": feedback,
     }
     return render(request, "feedback/feedback.html", context)
+    # return HttpResponseRedirect("/")
