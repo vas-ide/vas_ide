@@ -7,7 +7,7 @@
 <body>
 <h2> Оставьте отзыв</h2>
 
-<form>
+<form action="/hello">
     <label for="name_id">Name:</label>
     <input type="text" id="name_id" name="name">
     <label for="surname_id">Surname:</label>
@@ -17,12 +17,19 @@
     <label for="login_id">LOGIN:</label>
     <input type="text" id="login_id" name="login">
     <label for="password_id">PASSWORD:</label>
-    <input type="text" id="password_id name=password">
+    <input type="text" id="password_id" name="passwd">
     <br>
     <br>
-    <label for="feedback_id">Additional information about you pet</label>
+    <label for="feedback_id">Feedback</label>
     <textarea name="feedback" id="feedback_id" cols="30" rows="10"></textarea>
-    <button>Send</button>
+    <button type="submit">Send</button>
 </form>
+<footer>
+    <h1>{{ name }}</h1>
+    <h1>{{ surname }}</h1>
+    <h1>{{ login }}</h1>
+    <h1>{{ passwd }}</h1>
+    <h1>{{ feedback }}</h1>
+</footer>
 </body>
 </html>
