@@ -1,15 +1,14 @@
 from django.urls import path
 from . import views
-
-
+from .views import advertisement_in_processing
 
 urlpatterns = [
     path("", views.Index.as_view()),
-    path("advertisement", views.AdvertisementPage.as_view()),
-    path("advertisement/get", views.AdvertisementPage.as_view()),
-    path("advertisement/post", views.AdvertisementPage.as_view()),
+    path("advertisement.html", views.AdvertisementPage.as_view()),
+    path("advertisement_in_processing.html", advertisement_in_processing),
     path("about.html", views.About.as_view()),
     path("categories.html", views.Categories.as_view()),
+    path("contacts.html", views.Contacts.as_view()),
     path("regions.html", views.Regions.as_view()),
     path("advertisement/skillbox_main.html", views.skillbox_main, name="skillbox_main"),
     path("advertisement/python_main.html", views.python_main, name="python_main"),
@@ -18,3 +17,5 @@ urlpatterns = [
     path("advertisement/git_main.html", views.git_main, name="git_main"),
 
 ]
+
+

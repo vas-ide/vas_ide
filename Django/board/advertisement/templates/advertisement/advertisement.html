@@ -2,29 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{title}}</title>
+    <title>{{ title }}</title>
 </head>
 <body>
-<h1>Vas-atc-ide</h1>
-    <h1>{{ name }}</h1>
-    <p>{{ text }}</p>
-<ul>
-    <h2><a href="https://skillbox.ru/">SkillBox----------</a><a href="skillbox_main.html">Test</a></h2>
-    <li><a href="https://skillbox.ru/course/profession-python-onboarding/">Python - Skillbox----------</a><a href="python_main.html">Test</a></li>
-    <li><a href="https://pandas.pydata.org/">Python - Pandas----------</a><a href="pandas_main.html">Test</a></li>
-    <li><a href="https://www.djangoproject.com/">Python - Django----------</a><a href="django_main.html">Test</a></li>
-    <li><a href="https://netology.ru/programs/prodatascience">Git----------</a><a href="git_main.html">Test</a></li>
-</ul>
+
+<h1>{{ name }}</h1>
+<p>{{ text }}</p>
+
+<!--<ul>-->
+<!--    <h2><a href="https://skillbox.ru/">SkillBox&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</a><a href="skillbox_main.html">Test</a></h2>-->
+<!--    <li><a href="https://skillbox.ru/course/profession-python-onboarding/">Python - Skillbox&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</a><a href="python_main.html">Test</a></li>-->
+<!--    <li><a href="https://pandas.pydata.org/">Python - Pandas&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</a><a href="pandas_main.html">Test</a></li>-->
+<!--    <li><a href="https://www.djangoproject.com/">Python - Django&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</a><a href="django_main.html">Test</a></li>-->
+<!--    <li><a href="https://netology.ru/programs/prodatascience">Git&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</a><a href="git_main.html">Test</a></li>-->
+<!--</ul>-->
 
 <footer>
-<div>
-    <h1>Pet-Doctor</h1>
-    <ul>
-        {% for advertisement in advertisement %}
+    <div>
+        <h1>Pet-Doctor</h1>
+        <ul>
+            {% for advertisement in advertisement %}
             <li>{{ advertisement }}</li>
-        {% endfor %}
-    </ul>
-</div>
+            {% endfor %}
+        </ul>
+    </div>
     <ul>
         <li><a href="about.html">About Us</a></li>
         <li><a href="categories.html">Categories our specialist</a></li>
@@ -34,6 +35,10 @@
         <li><a href="regions.html">Our regions</a></li>
     </ul>
     <h6>You Ip address is {{ ip }}</h6>
+    <form action="/" method="post">
+    {% csrf_token %}
+    <button type="submit">Send</button>
+</form>
 </footer>
 </body>
 </html>

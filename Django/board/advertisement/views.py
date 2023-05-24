@@ -2,7 +2,7 @@ from urllib import request
 
 from django.shortcuts import render
 from django.views import View
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic import TemplateView
 from advertisement.models import Advertisement
 
@@ -16,30 +16,25 @@ class Index(View):
 
 
 class AdvertisementPage(View):
+    def __init__(self):
+        self.context = {
+            "title": "Advertisement's",
+            "name": "Advertisement-board",
+            "header_text": "Это первая страница не тестовом проекте board в тестовом приложении advertisement так-же "
+                           "тут идут смешанные пробы Petdoctor в малом колличестве. Это стартовый макет первой версии",
+            # "ip": request.META.get("REMOTE_ADDR"),
+            "post": f"Запрос на создание успешной записи обрабатывается !",
+        }
+
     def get(self, request):
-        title = "Доска обьявлений-ADVERTISMENT"
-        name = "Тестовый сайт по шаблонам джанго"
-        text = "Это первая страница не тестовом проекте board в тестовом приложении advertisement так-же тут " \
-               " идут смешанные пробы Petdoctor в малом колличестве. Это стартовый макет первой версии"
-        ip = request.META.get("REMOTE_ADDR")
-        return render(request, "advertisement/advertisement.html",
-                      {"title": title, "name": name, "text": text, "ip": ip})
+        if request.method == "GET":
+            return render(request, "advertisement/advertisement.html", context=self.context)
+        elif request.method == "POST":
+            return HttpResponseRedirect("/advertisement_in_processing")
 
-    def post(self, request):
-        tell = f"Запрос на создание успешной записи обрабатывается !"
-        return render(request, "advertisement/advertisement_post.html", {"tell": tell})
+def advertisement_in_processing(request):
+    return render(request, "advertisement/advertisement_in_processing.html")
 
-
-# def advertisement(request, *args, **kwargs):
-#     ip = request.META.get("REMOTE_ADDR")
-#     advertisement = ["Delivery to clinic",
-#                      "Опрос и первичный осмотр",
-#                      "Диагностика и анализы",
-#                      "Вмешательство или процедуры",
-#                      "Вторичный анализ и осмотр",
-#                      "Delivery from clinic to home"
-#     ]
-#     return render(request, "advertisement/advertisement.html", {"ip_address": ip, "advertisement": advertisement})
 
 def skillbox_main(request, *args, **kwargs):
     return render(request, "advertisement/skillbox_main.html", {})
@@ -62,6 +57,19 @@ def git_main(request, *args, **kwargs):
     return render(request, "advertisement/git_main.html", {})
 
 
+class About(TemplateView):
+    template_name = "advertisement/about.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = "About"
+        context["name"] = "О Pet-Doctor."
+        context["about"] = "Мы предоставляем большой спектр услуг в области ветеринарии. " \
+                           "У нас работают опытные дипломированные специалисты которые проведут " \
+                           "грамотную диагностику и окажут своевременоое лучение."
+        return context
+
+
 class Categories(TemplateView):
     template_name = "advertisement/categories.html"
 
@@ -74,31 +82,6 @@ class Categories(TemplateView):
             "Delivery to clinic", "Опрос и первичный осмотр", "Диагностика и анализы",
             "Вмешательство или процедуры", "Вторичный анализ и осмотр", "Delivery from clinic to home",
         ]
-        return context
-
-
-# def categories_us(request):
-#     ip = request.META.get("REMOTE_ADDR")
-#     categories = ["Delivery to clinic",
-#                      "Опрос и первичный осмотр",
-#                      "Диагностика и анализы",
-#                      "Вмешательство или процедуры",
-#                      "Вторичный анализ и осмотр",
-#                      "Delivery from clinic to home"
-#     ]
-#     return render(request, "advertisement/categories.html", {"ip_address": ip, "categories": categories})
-
-
-class About(TemplateView):
-    template_name = "advertisement/about.html"
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["title"] = "About"
-        context["name"] = "О Pet-Doctor."
-        context["about"] = "Мы предоставляем большой спектр услуг в области ветеринарии. " \
-                           "У нас работают опытные дипломированные специалисты которые проведут " \
-                           "грамотную диагностику и окажут своевременоое лучение."
         return context
 
 
@@ -137,17 +120,3 @@ class Regions(View):
 
     def post(self, request):
         print(f"Регион успешно создан")
-
-# def regions_us(request):
-#     ip = request.META.get("REMOTE_ADDR")
-#     regions = [
-#         "Краснодарский Край",
-#         "Краснодар",
-#         "Ростовская Область",
-#         "Ростов-на-Дону"
-#         "Волгоградская Область",
-#         "Волгоград",
-#         "Ставропольский Край",
-#         "Ставрополь",
-#     ]
-#     return render(request, "advertisement/regions.html", {"ip_address": ip, "regions": regions})
