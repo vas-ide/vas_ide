@@ -7,6 +7,6 @@ from django.urls import path
 
 urlpatterns = [
     path('', index),
-    path('/done', done),
+    path('done', done),
     # path('hello', hello),
 ]
