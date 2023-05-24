@@ -5,27 +5,55 @@
     <title>Index</title>
 </head>
 <body>
-<h1>INDEX</h1>
-<h3>Услуги</h3>
+
+<form>
+    <p><b>Виды услуг.</b></p>
+    {% for cat in category %}
+    <p><input name="category" type="radio" value="{{ cat }}"> {{ cat }}</p>
+    {% endfor %}
+    <p><input type="submit" value="Выбрать"></p>
+</form>
+<hr>
+<form>
+    <p><b>Регионы где мы работаем.</b></p>
+    {% for region in regions %}
+    <p><input name="regions" type="radio" value="{{ region }}"> {{ region }}</p>
+    {% endfor %}
+    <p><input type="submit" value="Выбрать"></p>
+</form>
+<hr>
 {% if advertisements %}
-    <ul>
-        {% for advertisement in advertisements %}
-        <li>
-            {{ advertisement.title }} (Цена: {{ advertisement.price }})
-            <p>
-                Дата создания: {{ advertisement.created_at }}
-            </p>
-            <p>
-                Колличество просмотров: {{ advertisement.views_count }}
-            </p>
-        </li>
-        {% endfor %}
-    </ul>
-    {% else %}
-    <p>Нет обьявлений</p>
-    {% endif %}
+<ul>
+    {% for advertisement in advertisements %}
+    <li>
+        {{ advertisement.title }} (Цена: {{ advertisement.price }})
+        <p>
+            Дата создания: {{ advertisement.created_at }}
+        </p>
+        <p>
+            Колличество просмотров: {{ advertisement.views_count }}
+        </p>
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>Нет обьявлений</p>
+{% endif %}
 <footer>
+    <form>
+        <label for="feedback_id">Поиск</label>
+        <textarea name="feedback" id="feedback_id" cols="30" rows="10"></textarea>
+        <button type="submit">Поиск</button>
+
+    </form>
     <h5><a href="advertisement.html">Main-page</a></h5>
+    <!--    <form action="handler.php">-->
+    <!--        <p><b>Какое у вас состояние разума?</b></p>-->
+    <!--        <p><input name="dzen" type="radio" value="nedzen"> Не дзен</p>-->
+    <!--        <p><input name="dzen" type="radio" value="dzen"> Дзен</p>-->
+    <!--        <p><input name="dzen" type="radio" value="pdzen" checked> Полный дзен</p>-->
+    <!--        <p><input type="submit" value="Выбрать"></p>-->
+    <!--    </form>-->
 </footer>
 </body>
 </html>

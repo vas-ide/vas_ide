@@ -8,11 +8,35 @@ from advertisement.models import Advertisement
 
 
 class Index(View):
+    def __init__(self):
+        self.context = {
+            "regions": [
+                "Краснодарский Край",
+                "Краснодар",
+                "Ростовская Область",
+                "Ростов-на-Дону",
+                "Волгоградская Область",
+                "Волгоград",
+                "Ставропольский Край",
+                "Ставрополь",
+            ],
+            "category": [
+                "Ветеринарные услуги",
+                "Гостиница для домашних животных",
+                "Строительные работы",
+                "Грузовые перевозки",
+                "Пассажирские перевозки",
+                "Туристические прогулки",
+                "Жилые помещения посуточно",
+                "Жилые помещения на длительное время",
+            ],
+            "advertisements": Advertisement.objects.all(),
+        }
 
     def get(self, request):
         ip = request.META.get("REMOTE_ADDR")
         advertisements = Advertisement.objects.all()
-        return render(request, "index.html", {"ip_address": ip, "advertisements": advertisements})
+        return render(request, "index.html", context=self.context)
 
 
 class AdvertisementPage(View):
@@ -31,6 +55,7 @@ class AdvertisementPage(View):
             return render(request, "advertisement/advertisement.html", context=self.context)
         elif request.method == "POST":
             return HttpResponseRedirect("/advertisement_in_processing")
+
 
 def advertisement_in_processing(request):
     return render(request, "advertisement/advertisement_in_processing.html")
