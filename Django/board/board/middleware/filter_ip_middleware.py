@@ -66,6 +66,6 @@ class LogMiddleware:
 
         with open("board/middleware/log/middleware-log.txt", "a", encoding="utf8") as code:
         # with open("middleware-log.txt", "a", encoding="utf8") as code:
-            code.write(f"Ip:{ip}    Date & Time:{current_datetime}\n")
+            code.write(f"Ip:{ip}    Date & Time:{current_datetime}    Method:{request.method} HTTP:-{request.path}\n")
         response = self.get_response(request)
         return response
