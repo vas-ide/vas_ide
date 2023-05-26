@@ -1,3 +1,4 @@
+import random
 from urllib import request
 
 from django.shortcuts import render
@@ -41,6 +42,8 @@ class Index(View):
 
 class AdvertisementPage(View):
     def __init__(self):
+        self.advertisements = Advertisement.objects.all()
+        self.random_advertisement = random.choice(self.advertisements)
         self.context = {
             "title": "Advertisement's",
             "name": "Advertisement-board",
@@ -48,6 +51,7 @@ class AdvertisementPage(View):
                            "тут идут смешанные пробы Petdoctor в малом колличестве. Это стартовый макет первой версии",
             # "ip": request.META.get("REMOTE_ADDR"),
             "post": f"Запрос на создание успешной записи обрабатывается !",
+            "random_adv": self.random_advertisement
         }
 
     def get(self, request):

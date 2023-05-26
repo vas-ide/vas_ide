@@ -20,6 +20,7 @@
 <footer>
     <div>
         <h1>Pet-Doctor</h1>
+        <p>{{ random_adv }}</p>
         <ul>
             {% for advertisement in advertisement %}
             <li>{{ advertisement }}</li>
@@ -27,18 +28,18 @@
         </ul>
     </div>
     <ul>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="categories.html">Categories our specialist</a></li>
-        <li><a href="contacts.html">Contacts</a></li>
+        <li><a href="advertisement/about.html">About Us</a></li>
+        <li><a href="advertisement/categories.html">Categories our specialist</a></li>
+        <li><a href="advertisement/contacts.html">Contacts</a></li>
+        <li><a href="advertisement/regions.html">Our regions</a></li>
         <li></li>
         <li></li>
-        <li><a href="regions.html">Our regions</a></li>
     </ul>
     <h6>You Ip address is {{ ip }}</h6>
     <form action="/" method="post">
-    {% csrf_token %}
-    <button type="submit">Send</button>
-</form>
+        {% csrf_token %}
+        <button type="submit">Send</button>
+    </form>
 </footer>
 </body>
 </html>
