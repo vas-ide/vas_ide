@@ -55,6 +55,20 @@ class AdvertisementPage(View):
         }
 
     def get(self, request):
+
+        # for i in range(500):
+        #     new_adv = Advertisement(title=f"title{i}")
+        #     new_adv.save()
+        #
+        # for i in Advertisement.objects.all():
+        #     for j in range(500):
+        #         search = Advertisement(title=f"title{j}")
+        #         if i.title == search.title:
+        #             print(search)
+        #             search_id = i.id
+        #             Advertisement.objects.get(id=search_id).delete()
+        #     # Advertisement.objects.all().delete()
+        #
         if request.method == "GET":
             return render(request, "advertisement/advertisement.html", context=self.context)
         elif request.method == "POST":
