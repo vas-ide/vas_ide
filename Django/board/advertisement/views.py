@@ -5,6 +5,7 @@ from django.shortcuts import render
 from django.views import View
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic import TemplateView
+from django.views import generic
 from advertisement.models import Advertisement
 
 
@@ -163,3 +164,10 @@ class Regions(View):
 
     def post(self, request):
         print(f"Регион успешно создан")
+
+
+class AdvertisementListView(generic.ListView):
+    match = Advertisement
+    template_name = "advertisement/advertisement_in_processing"
+    context_object_name = "advertisement_list"
+    queryset = Advertisement.objects.all()
