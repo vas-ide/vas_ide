@@ -40,6 +40,13 @@ class Index(View):
         advertisements = Advertisement.objects.all()
         return render(request, "index.html", context=self.context)
 
+class AdvertisementListView(generic.ListView):
+    model = Advertisement
+    template_name = "advertisement/advertisement_in_processing"
+    context_object_name = "advertisement_list"
+    queryset = Advertisement.objects.all()[:10]
+
+
 
 class AdvertisementPage(View):
     def __init__(self):
@@ -166,8 +173,4 @@ class Regions(View):
         print(f"Регион успешно создан")
 
 
-class AdvertisementListView(generic.ListView):
-    match = Advertisement
-    template_name = "advertisement/advertisement_in_processing"
-    context_object_name = "advertisement_list"
-    queryset = Advertisement.objects.all()
+

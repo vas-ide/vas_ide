@@ -6,7 +6,7 @@ from .views import AdvertisementListView, advertisement_in_processing
 urlpatterns = [
     path("", views.Index.as_view()),
     path("advertisement.html", views.AdvertisementPage.as_view()),
-    path("advertisement", AdvertisementListView.as_view(), name="advertisement"),
+    path("advertisement", AdvertisementListView.as_view(), name="advertisement_list"),
     path("advertisement_in_processing.html", advertisement_in_processing),
     path("advertisement/about.html", views.About.as_view()),
     path("advertisement/categories.html", views.Categories.as_view()),
