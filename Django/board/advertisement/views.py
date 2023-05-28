@@ -46,6 +46,10 @@ class AdvertisementListView(generic.ListView):
     context_object_name = "advertisement_list"
     queryset = Advertisement.objects.all()[:10]
 
+class AdvertisementDetailView(generic.DetailView):
+    model = Advertisement
+
+
 
 
 class AdvertisementPage(View):
