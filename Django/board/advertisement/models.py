@@ -50,3 +50,25 @@ class Region(models.Model):
 
     class Meta:
         db_table = "region"
+
+
+class Author(models.Model):
+    nick_name = models.CharField(max_length=150, verbose_name="Псевдоним автора")
+    name = models.CharField(max_length=150, blank=True, verbose_name="Имя")
+    second_name = models.CharField(max_length=150, blank=True, verbose_name="Фамилия")
+    email = models.EmailField(blank=True, verbose_name="Электронная почта")
+
+    def __str__(self):
+        return f"{self.nick_name}"
+
+    class Meta:
+        db_table = "authors"
+
+class Classification(models.Model):
+    name = models.CharField(max_length=150, verbose_name="Классификация (Рубрика объявления)")
+
+    def __str__(self):
+        return f"{self.name}"
+
+    class Meta:
+        db_table = "classifications"
