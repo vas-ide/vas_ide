@@ -10,10 +10,10 @@ def columnize(items, columns_count):
         if columns_count > counter:
             string += f" {i:<{leng_max}} |"
             counter += 1
-        if counter == columns_count:
-            string = string[:-2]
-            string += f'\n'
-            counter = 0
+            if counter == columns_count:
+                string = string[:-2]
+                string += f'\n'
+                counter = 0
 
     print(string)
     return string
