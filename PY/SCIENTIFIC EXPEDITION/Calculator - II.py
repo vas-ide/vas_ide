@@ -45,12 +45,17 @@ def calculator(log: str) -> str:
 
 
                         else:
-                            if __ in self.symbol_lst and len(self.number_arg) < 1:
+                            if __ in self.symbol_lst:
+                                if len(self.number_arg) > 0:
+                                    self.inf_init_analiz.append(self.number_arg)
+                                    self.number_arg = ""
                                 self.symbol_arg += __
                             elif __.isdigit():
+                                if len(self.symbol_arg) > 0:
+                                    self.inf_init_analiz.append(self.symbol_arg)
+                                    self.symbol_arg = ""
                                 self.number_arg += __
-                            elif __ is self.symbol_lst:
-                                self.inf_init_analiz.append(f"{self.symbol_arg}{self.number_arg}")
+
 
 
 
@@ -62,6 +67,22 @@ def calculator(log: str) -> str:
                         self.number_arg = ""
                     elif len(self.symbol_arg) > 0:
                         self.inf_init_analiz.append(f"{self.symbol_arg}")
+                        self.symbol_arg = ""
+                        self.number_arg = ""
+
+
+                    if len(self.inf_init_analiz) > 1 and len(self.inf_init_analiz[1]) != 1:
+                        for i in self.inf_init_analiz[1]:
+                            if i == self.symbol_lst[2] and len(self.symbol_arg) < 1:
+                                pass
+                            elif i != self.symbol_lst[2]:
+                                self.symbol_arg = i
+                            else:
+                                self.symbol_arg += i
+                        self.inf_init_analiz[1] = self.symbol_arg
+                        self.symbol_arg = ""
+
+
 
 
 
@@ -85,9 +106,9 @@ calculator("3===+5====")
 calculator("3===+====")
 calculator("3+=")
 # # "6"
-# calculator("3+2==")
+calculator("3+2==")
 # # "7"
-# calculator("3+-2=")
+calculator("3+-2=")
 # # "1"
 # calculator("-=-+3-++--+-2=-")
 # # "1"
@@ -113,7 +134,7 @@ calculator("3+=")
 # # "3"
 # calculator("1+2=2")
 # # "2"
-# calculator("=5=10=15")
+calculator("=5=10=15")
 # # "15"
 
 
