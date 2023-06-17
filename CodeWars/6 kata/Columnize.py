@@ -13,6 +13,7 @@ def columnize(items, columns_count):
         if counter == columns_count:
             string = string[:-2]
             string += f'\n'
+
             counter = 0
 
     print(string)
