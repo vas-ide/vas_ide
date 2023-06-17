@@ -42,13 +42,27 @@ def calculator(log: str) -> str:
                                 self.inf_init_analiz.append(f"{self.symbol_arg}{self.number_arg}")
                                 self.symbol_arg = __
                                 self.number_arg = ""
+
+
                         else:
-                            pass
-                    if self.symbol_arg != self.symbol_lst[1]:
+                            if __ in self.symbol_lst and len(self.number_arg) < 1:
+                                self.symbol_arg += __
+                            elif __.isdigit():
+                                self.number_arg += __
+                            elif __ is self.symbol_lst:
+                                self.inf_init_analiz.append(f"{self.symbol_arg}{self.number_arg}")
+
+
+
+                    if len(self.number_arg) > 0:
+                        if self.symbol_arg != self.symbol_lst[1]:
+                            self.symbol_arg = ""
+                        self.inf_init_analiz.append(f"{self.symbol_arg}{int(self.number_arg)}")
                         self.symbol_arg = ""
-                    self.inf_init_analiz.append(f"{self.symbol_arg}{self.number_arg}")
-                    self.symbol_arg = ""
-                    self.number_arg = ""
+                        self.number_arg = ""
+                    elif len(self.symbol_arg) > 0:
+                        self.inf_init_analiz.append(f"{self.symbol_arg}")
+
 
 
 
@@ -67,7 +81,7 @@ def calculator(log: str) -> str:
 
         case _:
             print(f"Непредвиденная ошбка нуэен дополнительный анализ.")
-# calculator("3===+5====")
+calculator("3===+5====")
 calculator("3===+====")
 calculator("3+=")
 # # "6"
@@ -83,9 +97,9 @@ calculator("3+=")
 # # "123"
 # calculator("12")
 # # "12"
-calculator("+12")
+# calculator("+12")
 # # "12"
-calculator("-12")
+# calculator("-12")
 # # "-12"
 # calculator("")
 # # "0"
