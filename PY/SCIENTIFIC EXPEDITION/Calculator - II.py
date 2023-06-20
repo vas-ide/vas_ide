@@ -22,6 +22,7 @@ def calculator(log: str) -> str:
                     self.result_arg = 0
                     self.symbol_lst = ["+", "-", "="]
                     self.symbol_arg = ""
+                    self.symbol_arg_add = ""
 
                 def init_analiz(self):
                     # first
@@ -81,44 +82,83 @@ def calculator(log: str) -> str:
                             self.result_arg = int(self.inf_init_analiz[0])
                         elif len(self.inf_init_analiz) == 2:
                             if len(self.inf_init_analiz[1]) > 1 and self.inf_init_analiz[1][0] == self.symbol_lst[0]:
-                                pass
-
+                                counter = 1
+                                while counter <= len(self.inf_init_analiz[1]):
+                                    self.result_arg += int(self.inf_init_analiz[0])
+                                    counter += 1
+                                break
                             elif len(self.inf_init_analiz[1]) > 1 and self.inf_init_analiz[1][0] == self.symbol_lst[1]:
-                                pass
-
-
-                        else:
-                            self.result_arg = int(self.inf_init_analiz[0])
+                                counter = 1
+                                while counter <= len(self.inf_init_analiz[1]):
+                                    self.result_arg -= int(self.inf_init_analiz[0])
+                                    counter += 1
+                                break
+                            else:
+                                self.result_arg = int(self.inf_init_analiz[0])
 
 
 
                         elif len(self.inf_init_analiz) == 3:
                             self.result_arg = int(self.inf_init_analiz[-1])
-                        elif not __.isdigit() and len(__) == 1 and len(self.inf_init_analiz) >= (_ + 2):
-                            if __ == self.symbol_lst[0]:
-                                self.first_arg = self.inf_init_analiz[_ - 1]
-                                self.second_arg = self.inf_init_analiz[_ + 1]
-                                self.result_arg += int(self.first_arg) + int(self.second_arg)
-                            elif __ == self.symbol_lst[1]:
-                                self.first_arg = self.inf_init_analiz[_ - 1]
-                                self.second_arg = self.inf_init_analiz[_ + 1]
-                                self.result_arg += int(self.first_arg) - int(self.second_arg)
-                            elif __ == self.symbol_lst[2]:
-                                self.result_arg = (self.inf_init_analiz[_ + 1])
+                        elif len(self.inf_init_analiz) >= 4:
+                            if len(__) == 1 and len(self.inf_init_analiz) >= (_ + 2):
+                                if __ == self.symbol_lst[0]:
+                                    self.first_arg = self.inf_init_analiz[_ - 1]
+                                    self.second_arg = self.inf_init_analiz[_ + 1]
+                                    self.result_arg += int(self.first_arg) + int(self.second_arg)
+                                elif __ == self.symbol_lst[1]:
+                                    self.first_arg = self.inf_init_analiz[_ - 1]
+                                    self.second_arg = self.inf_init_analiz[_ + 1]
+                                    self.result_arg += int(self.first_arg) - int(self.second_arg)
+                                    self.symbol_arg_add = self.symbol_lst[1]
+                                elif __ == self.symbol_lst[2]:
+                                    self.result_arg = (self.inf_init_analiz[_ + 1])
+
+
+                            elif len(__) > 1 and len(self.inf_init_analiz) == (_ + 1):
+                                if __[0] == self.symbol_lst[0]:
+                                    self.second_arg = self.inf_init_analiz[_ - 1]
+                                    counter = 3
+                                    while counter <= len(self.inf_init_analiz[_]):
+                                        self.result_arg += int(self.second_arg)
+                                        counter += 1
+                                    break
+                                elif __[0] == self.symbol_lst[1]:
+                                    self.second_arg = self.inf_init_analiz[_ - 1]
+                                    counter = 3
+                                    while counter <= len(self.inf_init_analiz[_]):
+                                        self.result_arg -= int(self.second_arg)
+                                        counter += 1
+                                    break
+                                elif __[0] == self.symbol_lst[2]:
+                                    if self.symbol_arg_add == self.symbol_lst[1]:
+                                        self.second_arg = self.inf_init_analiz[_ - 1]
+                                        counter = 2
+                                        while counter <= len(self.inf_init_analiz[_]):
+                                            self.result_arg -= int(self.second_arg)
+                                            counter += 1
+                                        break
+                                    else:
+                                        self.second_arg = self.inf_init_analiz[_ - 1]
+                                        counter = 2
+                                        while counter <= len(self.inf_init_analiz[_]):
+                                            self.result_arg += int(self.second_arg)
+                                            counter += 1
+                                        break
 
             cac = CalcInit(infirmation)
             cac.init_analiz()
             cac.calculate()
             # print(cac.inf)
-            # print(cac.inf_init_analiz)
-            # print(cac.result_arg)
+            print(cac.inf_init_analiz)
+            print(cac.result_arg)
             # return f"{cac.result_arg}"
 
         case _:
             print(f"Непредвиденная ошбка нуэен дополнительный анализ.")
 
 
-# calculator("3===+5====")
+calculator("3===+5====")
 calculator("3===+====")
 calculator("3+=")
 # "6"
