@@ -118,32 +118,32 @@ def calculator(log: str) -> str:
                             elif len(__) > 1 and len(self.inf_init_analiz) == (_ + 1):
                                 if __[0] == self.symbol_lst[0]:
                                     self.second_arg = self.inf_init_analiz[_ - 1]
-                                    counter = 3
-                                    while counter <= len(self.inf_init_analiz[_]):
-                                        self.result_arg += int(self.second_arg)
-                                        counter += 1
-                                    break
+                                    for i in __[1:]:
+                                        if i != self.symbol_lst[2]:
+                                            break
+                                        else:
+                                            self.result_arg += int(self.second_arg)
                                 elif __[0] == self.symbol_lst[1]:
                                     self.second_arg = self.inf_init_analiz[_ - 1]
-                                    counter = 3
-                                    while counter <= len(self.inf_init_analiz[_]):
-                                        self.result_arg -= int(self.second_arg)
-                                        counter += 1
-                                    break
-                                elif __[0] == self.symbol_lst[2]:
-                                    if self.symbol_arg_add == self.symbol_lst[1]:
-                                        self.second_arg = self.inf_init_analiz[_ - 1]
-                                        counter = 2
-                                        while counter <= len(self.inf_init_analiz[_]):
+                                    for i in __[1:]:
+                                        if i != self.symbol_lst[2]:
+                                            break
+                                        else:
                                             self.result_arg -= int(self.second_arg)
-                                            counter += 1
-                                        break
+                                elif __[0] == self.symbol_lst[2]:
+                                    self.second_arg = self.inf_init_analiz[_ - 1]
+                                    if self.symbol_arg_add == self.symbol_lst[1]:
+                                        for i in __[1:]:
+                                            if i != self.symbol_lst[2]:
+                                                break
+                                            else:
+                                                self.result_arg -= int(self.second_arg)
                                     else:
-                                        self.second_arg = self.inf_init_analiz[_ - 1]
-                                        counter = 2
-                                        while counter <= len(self.inf_init_analiz[_]):
-                                            self.result_arg += int(self.second_arg)
-                                            counter += 1
+                                        for i in __[1:]:
+                                            if i != self.symbol_lst[2]:
+                                                break
+                                            else:
+                                                self.result_arg += int(self.second_arg)
                                         break
 
             cac = CalcInit(infirmation)
@@ -158,15 +158,14 @@ def calculator(log: str) -> str:
             print(f"Непредвиденная ошбка нуэен дополнительный анализ.")
 
 
-calculator("3===+5====")
-calculator("3===+====")
+
 calculator("3+=")
 # "6"
-# calculator("3+2==")
+calculator("3+2==")
 # # "7"
 # calculator("3+-2=")
 # # "1"
-# calculator("-=-+3-++--+-2=-")
+calculator("-=-+3-++--+-2=-")
 # # # "1"
 # calculator("000000")
 # # # "0"
