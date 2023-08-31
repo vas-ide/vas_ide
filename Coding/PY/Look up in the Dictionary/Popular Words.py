@@ -8,8 +8,7 @@ def popular_words(text: str, words: list) -> dict:
     rezult_dict = dict.fromkeys(words, 0)
     for i in upd_text:
         if i in words:
-            if i in rezult_dict:
-                rezult_dict[i] += 1
+            rezult_dict[i] += 1
     print(rezult_dict)
     return rezult_dict
 
