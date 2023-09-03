@@ -1,27 +1,18 @@
 
-def select(limit:int, data: list[dict]):
+def bigger_price(limit:int, data: list[dict]):
+
     max_list = []
-    for i in data:
-        max_list.append([v for k,v in i.items() if k=='price'])
-    couter = 0
+    [max_list.append(i['price']) for i in data]
+    max_list_upd = sorted(max_list,reverse=1)[:limit]
     rezult_list = []
 
-    while couter != limit:
-        max_value = max(max_list)
-        for i in data:
-            print(i)
-            if [v for k, v in i.items() if v == max_value]:
-                rezult_list.append(i)
-        max_list.remove(max_value)
-        couter += 1
+    for i in max_list_upd:
+        for j in data:
+            if i == j['price']:
+                rezult_list.append(j)
 
-
-    print(max_list,rezult_list)
-
-
-
-
-
+    print(rezult_list)
+    return rezult_list
 
 
 
@@ -32,7 +23,9 @@ data_inf = [
     {"name": "meat", "price": 15},
     {"name": "water", "price": 1},
 ]
-select(2, data_inf)
+bigger_price(1, data_inf)
+bigger_price(3, data_inf)
+bigger_price(2, data_inf)
 
 
 
