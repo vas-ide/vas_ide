@@ -1,6 +1,3 @@
-
-
-
 # def flatten(dictionary: dict[str, str | dict], new_list=None) -> dict[str, str]:
 #     if not new_list: new_list = []
 #
@@ -18,10 +15,13 @@ def flatten(dictionary: dict[str, str | dict]) -> dict[str, str]:
     new_string = ''
     new_dict = {}
     max_len = len(dictionary)
+
     def annaliz(data, new_string):
         for key, value in data.items():
-            if len(data) == max_len and len(data) > 1:
-                new_string = ''
+            print(len(data))
+
+            # if len(data) == max_len and len(data) > 1:
+            #     new_string = ''
 
             if type(value) == dict:
                 new_string += f'/{key}'
@@ -35,12 +35,12 @@ def flatten(dictionary: dict[str, str | dict]) -> dict[str, str]:
                     new_dict[f'{new_string[1:]}/{key}'] = value
                 else:
                     new_dict[f'{key}'] = value
+
         return new_dict
+
     annaliz(dictionary, new_string)
     print(new_dict)
-    return new_dict
-
-
+    # return new_dict
 
 
 flatten({"key": "value"})
@@ -69,7 +69,6 @@ flatten(
 # }
 
 
-
 # def func_too(number):
 #     if number > 0:
 #         print(number-1)
@@ -77,8 +76,12 @@ flatten(
 # func_too(15)
 
 
-
-flatten({'name': {'first': 'Second', 'last': 'Drone', 'nick': {}}, 'job': {'1': 'scout', '2': 'worker', '3': 'writer', '4': 'reader', '5': 'learner'}, 'recent': {'places': {'earth': {'Louvre': '2015', 'NY': '2017', 'NP': ''}}, 'times': {'XX': {'1964': 'Yes'}, 'XXI': {'2064': 'Nope'}}}})
+flatten(
+    {'name': {'first': 'Second', 'last': 'Drone', 'nick': {}},
+     'job': {'1': 'scout', '2': 'worker', '3': 'writer', '4': 'reader', '5': 'learner'},
+     'recent': {'places': {'earth': {'Louvre': '2015', 'NY': '2017', 'NP': ''}},
+                'times': {'XX': {'1964': 'Yes'}, 'XXI': {'2064': 'Nope'}}}}
+)
 # {
 #     'job/1': 'scout',
 #     'recent/places/earth/NY': '2017',
