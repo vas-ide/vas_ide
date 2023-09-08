@@ -1,3 +1,4 @@
+
 from django.shortcuts import render
 
 # Create your views here.
@@ -26,6 +27,15 @@ def employee_information_slug(request, employee_slug):
         'employee_slug': employee_slug
     }
     return render(request, "workshift/employee_info_slug.html", content)
+
+def archive_year(request, year):
+
+
+    content = {
+        'archive_year': year
+
+    }
+    return render(request, "workshift/archive.html", content)
 
 
 
