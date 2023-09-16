@@ -18,14 +18,13 @@ def flatten(dictionary: dict[str, str | dict]) -> dict[str, str]:
 
     def annaliz(data, new_string):
         for key, value in data.items():
-            print(len(data))
+            # print(len(data))
 
             # if len(data) == max_len and len(data) > 1:
             #     new_string = ''
 
             if type(value) == dict:
                 new_string += f'/{key}'
-
                 if len(value) < 1:
                     new_dict[f'{new_string[1:]}'] = f""
                 else:
