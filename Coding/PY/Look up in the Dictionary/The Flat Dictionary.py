@@ -16,29 +16,36 @@ def flatten(dictionary: dict[str, str | dict]) -> dict[str, str]:
     new_dict = {}
     max_len = len(dictionary)
 
-    def annaliz(data, new_string):
-        for key, value in data.items():
-            # print(len(data))
+    # def tets_analiz()
+    # for key,value in dictionary.items():
+    #     print(key, value)
 
-            # if len(data) == max_len and len(data) > 1:
-            #     new_string = ''
-
-            if type(value) == dict:
-                new_string += f'/{key}'
-                if len(value) < 1:
-                    new_dict[f'{new_string[1:]}'] = f""
-                else:
-                    annaliz(value, new_string)
-            elif type(value) != dict:
-                if len(new_string) > 1:
-                    new_dict[f'{new_string[1:]}/{key}'] = value
-                else:
-                    new_dict[f'{key}'] = value
-
-        return new_dict
-
-    annaliz(dictionary, new_string)
-    print(new_dict)
+    # def annaliz(data, new_string):
+    #     for key, value in data.items():
+    #         # print(len(data))
+    #
+    #         if len(data) == max_len and len(data) > 1:
+    #             if len(new_string) > 1:
+    #                 new_string = ''
+    #             else:
+    #                 pass
+    #
+    #         if type(value) == dict:
+    #             new_string += f'/{key}'
+    #             if len(value) < 1:
+    #                 new_dict[f'{new_string[1:]}'] = f""
+    #             else:
+    #                 annaliz(value, new_string)
+    #         elif type(value) != dict:
+    #             if len(new_string) > 1:
+    #                 new_dict[f'{new_string[1:]}/{key}'] = value
+    #             else:
+    #                 new_dict[f'{key}'] = value
+    #
+    #     return new_dict
+    #
+    # annaliz(dictionary, new_string)
+    # print(new_dict)
     # return new_dict
 
 

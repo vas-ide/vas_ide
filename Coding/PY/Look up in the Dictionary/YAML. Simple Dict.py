@@ -8,10 +8,11 @@ def yaml(a: str) -> dict:
     for i in a.split('\n'):
         if len(i) > 0:
             i_upd = i.split(':')
+            print(i_upd)
             try:
                 info_dict[i_upd[0]] = int(i_upd[1])
             except:
-                info_dict[i_upd[0]] = i_upd[1]
+                info_dict[i_upd[0]] = i_upd[1].strip()
     print(info_dict)
     return info_dict
 
