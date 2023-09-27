@@ -26,6 +26,15 @@ response5 = requests.head(url, data={'method': 'head'})
 response6 = requests.options(url=url, data={'method': 'options'})
 print(response.text, '\n', response1.text, '\n', response2.text, '\n', response3.text, '\n', response4.text, '\n',
       response5.text, '\n', response6.text)
+print(f'___for___')
+method_lst = ["GET", "POST", "DELETE", "PUT"]
+for i in method_lst:
+    print(i)
+    response1 = requests.get(url=url, params={'method': i})
+    response2 = requests.post(url=url, data={'method': i})
+    response3 = requests.delete(url=url, data={'method': i})
+    response4 = requests.put(url=url, data={'method': i})
+    print(response1.text, '\n', response2.text, '\n', response3.text, '\n', response4.text)
 print(f'---4---')
 
 print(f'---5---')
