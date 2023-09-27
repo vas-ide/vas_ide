@@ -37,39 +37,36 @@ import time
 #     response4 = requests.put(url=url, data={'method': i})
 #     print(response1.text, '\n', response2.text, '\n', response3.text, '\n', response4.text)
 print(f'---4---')
-def analiZe():
-    url = "https://playground.learnqa.ru/ajax/api/longtime_job"
-    response_init = requests.get(url=url)
-    response_json = json.loads(response_init.text)
-    token = response_json['token']
-    seconds = response_json['seconds']
-    print(f'token={token}    seconds={seconds}')
-    response = requests.get(url=url, params={'token': token})
-    print(response.text)
-    response_json = json.loads(response.text)
-    response_status = response_json['status']
-    if response_status == "Job is NOT ready":
-        print(True, f"--->>>     {response_status}")
-    else:
-        print(False, f"Unknown status")
-    time.sleep(seconds)
-    response = requests.get(url=url, params={'token': token})
-    response_json = json.loads(response.text)
-    response_status = response_json["status"]
-    response_result = response_json["result"]
-    if response_status == "Job is ready" and response_result is not None:
-        print(True, f"--->>> result-{response_result} status-{response_status}")
-    else:
-        print(False, f"Unknown errors")
-    # print(response.text)
-
-
-    # print(response.text, type(response.text))
-    # time.sleep(10)
-    # print(response.text)
-    # response = requests.get(url=url, params='token')
-    # print(response.text)
-analiZe()
+# def analiZe():
+#     url = "https://playground.learnqa.ru/ajax/api/longtime_job"
+#     response_init = requests.get(url=url)
+#     response_json = json.loads(response_init.text)
+#     token = response_json['token']
+#     seconds = response_json['seconds']
+#     print(f'token={token}    seconds={seconds}')
+#     response = requests.get(url=url, params={'token': token})
+#     print(response.text)
+#     response_json = json.loads(response.text)
+#     response_status = response_json['status']
+#     if response_status == "Job is NOT ready":
+#         print(True, f"--->>>     {response_status}")
+#     else:
+#         print(False, f"Unknown status")
+#     time.sleep(seconds)
+#     response = requests.get(url=url, params={'token': token})
+#     response_json = json.loads(response.text)
+#     response_status = response_json["status"]
+#     response_result = response_json["result"]
+#     if response_status == "Job is ready" and response_result is not None:
+#         print(True, f"--->>> result-{response_result} status-{response_status}")
+#     else:
+#         print(False, f"Unknown errors")
+#
+#
+# analiZe()
 print(f'---5---')
 
-print(f'---6---')
+url = "https://playground.learnqa.ru/ajax/api/get_secret_password_homework"
+
+
+
