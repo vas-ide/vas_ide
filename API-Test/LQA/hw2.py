@@ -1,6 +1,7 @@
 import json
 import requests
 import time
+
 #
 # print(f'---1---')
 # json_text = '{"messages":[{"message":"This is the first message","timestamp":"2021-06-04 16:40:53"},{"message":"And this is a second message","timestamp":"2021-06-04 16:41:01"}]}'
@@ -68,7 +69,21 @@ print(f'---5---')
 
 url = "https://playground.learnqa.ru/ajax/api/get_secret_password_homework"
 login = "super_admin"
-password = ["123456", "123456789", "qwerty", "password", "1234567", "12345678", "12345", "iloveyou", "111111", "123123", "abc123", "qwerty123", "1q2w3e4r", "admin", "qwertyuiop", "654321", "555555", "lovely", "7777777", "welcome", "888888", "princess", "dragon", "password1", ]
+# password = ["123456", "123456789", "qwerty", "password", "1234567", "12345678", "12345", "iloveyou", "111111", "123123",
+#             "abc123", "qwerty123", "1q2w3e4r", "admin", "qwertyuiop", "654321", "555555", "lovely", "7777777",
+#             "welcome", "888888", "princess", "dragon", "password1", ]
+password_lst = [
+    "password", "123456", "123456789", "12345678", "12345", "qwerty", "abc123", "football", "1234567", "monkey",
+    "111111", "letmein", "1234", "1234567890", "dragon", "baseball", "sunshine", "iloveyou", "trustno1",
+    "princess",
+    "adobe123[a]", "123123", "welcome", "login", "admin", "princess", "qwerty123", "solo", "1q2w3e4r", "master",
+    "letmein", "666666", "photoshop[a]", "1qaz2wsx", "qwertyuiop", "ashley", "mustang", "121212", "starwars",
+    "654321",
+    "bailey", "access", "flower", "555555", "passw0rd", "shadow", "lovely", "7777777", "michael", "!@#$%^&*", "jesus",
+    "password1", "hello",
+    "charlie", "888888", "superman", "696969", "hottie",
+    "freedom", "aa123456", "ninja", "azerty", "solo", "loveme", "whatever", "donald", "batman", "passw0rd",
+    "zaq1zaq1", "qazwsx", "password1", "Football", "000000", "123qwe"
+]
+
 response = requests.post(url, data={})
-
-
