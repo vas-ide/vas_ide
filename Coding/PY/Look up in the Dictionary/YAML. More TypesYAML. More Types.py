@@ -3,8 +3,9 @@ import random
 
 def yaml(a: str) -> dict:
     info_dict = {}
-    # print(a.split('\n'))
+    print(a.split('\n'))
     for i in a.split('\n'):
+        # if ":" in i:
         if len(i) > 0:
             # print(i)
             dice = random.randint(0, 1000000)

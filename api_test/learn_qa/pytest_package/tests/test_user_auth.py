@@ -1,9 +1,14 @@
 
 import requests
 import pytest
-from vas_ide.api_test.learn_qa.pytest_package.lib.assertions import Assertions
-from vas_ide.api_test.learn_qa.pytest_package.lib.basecase import BaseCase
+# from vas_ide.api_test.learn_qa.pytest_package.lib.assertions import Assertions
+# from vas_ide.api_test.learn_qa.pytest_package.lib.basecase import BaseCase
 
+
+import sys
+sys.path.append("..")
+from ..lib.basecase import BaseCase
+from ..lib.assertions import Assertions
 
 class TestUserAuth(BaseCase):
     exclude_params = [
