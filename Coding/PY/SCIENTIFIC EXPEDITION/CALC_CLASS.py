@@ -31,16 +31,20 @@ class  Calculator():
                         self.string_lst.append(digits_str)
                         digits_str = ""
                     not_digit_str += i
-                # if self.string_lst[0] in self.simbol_lst and self.string_lst[1] not in self.simbol_lst:
-                #     add_sting = f"{self.string_lst[0]}{self.string_lst[1]}"
-                #     self.simbol_lst = [f"{int(add_sting)}"]
+                if len(self.string_lst) == 2 and self.string_lst[0] == "=":
+                    self.string_lst = [f"{self.string_lst[1]}"]
+
             if len(digits_str) > 0:
                 self.string_lst.append(digits_str)
             elif len(not_digit_str) > 0:
                     self.string_lst.append(not_digit_str)
             if self.string_lst[0] in self.simbol_lst:
                 pass
+
+
             print(self.string_lst)
+
+
 
             if len(self.string_lst) == 2 and self.string_lst[1] in self.simbol_lst:
                 print(self.string_lst[0])
@@ -49,25 +53,20 @@ class  Calculator():
                 print(self.string_lst[2])
                 return self.string_lst[2]
 
+            for i, j in enumerate(self.string_lst):
+                if j == self.simbol_lst[0] and i != len(self.string_lst) - 1:
+                    if self.result_arg == 0:
+                        self.result_arg = self.string_lst[i - 1] = self.string_lst[i + 1]
+                        print(self.result_arg)
 
 
-
-            # for i,j in self.string_lst:
-
-
-
-
-
-
-
-
-
-
+            print(self.result_arg)
 
 
 def calculator(log: str) -> str:
     calc = Calculator(string=log)
     calc.run()
+
 
 # def calculator(log: str) -> str:
 #     match log:
@@ -152,20 +151,20 @@ def calculator(log: str) -> str:
 #             print(f"Непредвиденная ошбка нуэен дополнительный анализ.")
 
 #
-calculator("-25")
-calculator("000000")
-# # "0"
-calculator("0000123")
-# # "123"
-calculator("12")
-# # "12"
-calculator("+12")
-# # "12"
-calculator("")
-# # "0"
-calculator("1+2")
-# # "2"
-calculator("2+")
+# calculator("-25")
+# calculator("000000")
+# # # "0"
+# calculator("0000123")
+# # # "123"
+# calculator("12")
+# # # "12"
+# calculator("+12")
+# # # "12"
+# calculator("")
+# # # "0"
+# calculator("1+2")
+# # # "2"
+# calculator("2+")
 # # "2"
 calculator("1+2=")
 # # "3"
