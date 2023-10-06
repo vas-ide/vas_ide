@@ -1,126 +1,70 @@
+class Calculator:
 
+    def __init__(self, string):
+        self.string = string
+        self.simbol_lst = ["+", "-", "="]
+        self.string_lst = []
+        self.before_arg = ""
+        self.after_arg = ""
+        self.result_arg = 0
 
+    def run(self):
+        try:
+            if len(self.string) < 1:
+                self.result_arg = "0"
+            elif len(self.string) == 1 and self.string in self.simbol_lst:
+                self.result_arg = "0"
+            self.result_arg = f"{int(self.string)}"
+        except:
+            digits_str = ''
+            not_digit_str = ""
+            for i in self.string:
+                if i not in self.simbol_lst:
+                    if len(not_digit_str) > 0:
+                        self.string_lst.append(not_digit_str)
+                        not_digit_str = ""
+                    digits_str += i
+                elif i in self.simbol_lst:
+                    if len(digits_str) > 0:
+                        self.string_lst.append(int(digits_str))
+                        digits_str = ""
+                    not_digit_str += i
+                if len(self.string_lst) == 2 and self.string_lst[0] == "=":
+                    self.string_lst = [f"{self.string_lst[1]}"]
+
+            if len(digits_str) > 0:
+                self.string_lst.append(int(digits_str))
+            elif len(not_digit_str) > 0:
+                self.string_lst.append(not_digit_str)
+
+            if len(self.string_lst) == 2 and self.string_lst[1] in self.simbol_lst:
+                self.result_arg = f"{self.string_lst[0]}"
+                return self.result_arg
+            elif len(self.string_lst) > 2 and self.string_lst[-1] not in self.simbol_lst:
+                self.result_arg = f"{self.string_lst[-1]}"
+                return self.result_arg
+
+            for i, j in enumerate(self.string_lst):
+                if self.result_arg == 0 and j not in self.simbol_lst:
+                    self.result_arg = j
+                elif j == self.simbol_lst[0] and i != len(self.string_lst) - 1:
+                    self.result_arg = f"{int(self.result_arg) + int(self.string_lst[i + 1])}"
+                elif j == self.simbol_lst[1] and i != len(self.string_lst) - 1:
+                    self.result_arg = f"{int(self.result_arg) - int(self.string_lst[i + 1])}"
+                elif j == self.simbol_lst[2] and i != len(self.string_lst) - 1:
+                    self.result_arg = f"{int(self.string_lst[i + 1])}"
 
 
 def calculator(log: str) -> str:
-    match log:
-        case str(information) if len(information) < 1:
-            print(f"0")
-            return f"0"
+    calc = Calculator(string=log)
+    calc.run()
+    print(calc.result_arg, type(calc.result_arg))
+    return calc.result_arg
 
 
-        case str(infirmation):
-            class CalcInit:
-                def __init__(self, inf):
-                    self.inf = inf
-                    self.inf_init_analiz = []
-                    # self.inf_init = []
-                    # self.inf_init_upd = []
-                    # self.inf_construct = []
-                    # self.inf_upd = []
-                    # self.result = 0
-                    self.number_arg = ""
-                    self.more_arg = ""
-                    # self.more_arg_add = ""
-                    self.first_arg = 0
-                    self.second_arg = 0
-                    self.result_arg = 0
-                    self.symbol_lst = ["+", "-", "="]
-                    self.symbol_arg = ""
-
-                def init_analiz(self):
-                    # first
-                    for _, __ in enumerate(self.inf):
-                        if len(self.inf_init_analiz) < 1:
-                            if __ in self.symbol_lst and len(self.number_arg) < 1:
-                                self.symbol_arg = __
-                            elif __.isdigit():
-                                self.number_arg += __
-                            elif __ in self.symbol_lst:
-                                if self.symbol_arg != self.symbol_lst[1]:
-                                    self.symbol_arg = ""
-                                self.inf_init_analiz.append(f"{self.symbol_arg}{self.number_arg}")
-                                self.symbol_arg = __
-                                self.number_arg = ""
-
-                        # all
-                        else:
-                            if __ in self.symbol_lst:
-                                if len(self.number_arg) > 0:
-                                    self.inf_init_analiz.append(self.number_arg)
-                                    self.number_arg = ""
-                                self.symbol_arg += __
-                            elif __.isdigit():
-                                if len(self.symbol_arg) > 0:
-                                    self.inf_init_analiz.append(self.symbol_arg)
-                                    self.symbol_arg = ""
-                                self.number_arg += __
-
-
-
-                    # final
-                    if len(self.number_arg) > 0:
-                        if self.symbol_arg != self.symbol_lst[1]:
-                            self.symbol_arg = ""
-                        self.inf_init_analiz.append(f"{self.symbol_arg}{int(self.number_arg)}")
-                        self.symbol_arg = ""
-                        self.number_arg = ""
-                    elif len(self.symbol_arg) > 0:
-                        self.inf_init_analiz.append(f"{self.symbol_arg}")
-                        self.symbol_arg = ""
-                        self.number_arg = ""
-
-
-                    if len(self.inf_init_analiz) > 1 and len(self.inf_init_analiz[1]) != 1:
-                        for i in self.inf_init_analiz[1]:
-                            if i == self.symbol_lst[2] and len(self.symbol_arg) < 1:
-                                pass
-                            elif i != self.symbol_lst[2]:
-                                self.symbol_arg = i
-                            else:
-                                self.symbol_arg += i
-                        self.inf_init_analiz[1] = self.symbol_arg
-                        self.symbol_arg = ""
-
-
-
-
-                def calculate(self):
-
-                    for _, __ in enumerate(self.inf_init_analiz):
-                        if len(self.inf_init_analiz) == 1:
-                            self.result_arg = int(self.inf_init_analiz[0])
-                        elif len(self.inf_init_analiz) == 2:
-                            self.result_arg = int(self.inf_init_analiz[0])
-                        elif len(self.inf_init_analiz) == 3:
-                            self.result_arg = int(self.inf_init_analiz[-1])
-                        elif not __.isdigit() and len(__) == 1 and len(self.inf_init_analiz) >= (_ + 2):
-                            if __ == self.symbol_lst[0]:
-                                self.first_arg = self.inf_init_analiz[_ -1]
-                                self.second_arg = self.inf_init_analiz[_ + 1]
-                                self.result_arg += int(self.first_arg) + int(self.second_arg)
-                            elif __ == self.symbol_lst[1]:
-                                self.first_arg = self.inf_init_analiz[_ -1]
-                                self.second_arg = self.inf_init_analiz[_ + 1]
-                                self.result_arg += int(self.first_arg) - int(self.second_arg)
-                            elif __ == self.symbol_lst[2]:
-                                self.result_arg = (self.inf_init_analiz[_ + 1])
-
-
-
-            cac = CalcInit(infirmation)
-            cac.init_analiz()
-            cac.calculate()
-            # print(cac.inf)
-            # print(cac.inf_init_analiz)
-            print(cac.result_arg)
-            return f"{cac.result_arg}"
-
-
-
-        case _:
-            print(f"Непредвиденная ошбка нуэен дополнительный анализ.")
-
+calculator('-5-10+15')
+calculator('000005+003') == '3'
+calculator("-25")
 calculator("000000")
 # # "0"
 calculator("0000123")
@@ -134,7 +78,7 @@ calculator("")
 calculator("1+2")
 # # "2"
 calculator("2+")
-# # "2"
+# "2"
 calculator("1+2=")
 # # "3"
 calculator("1+2-")
@@ -142,7 +86,6 @@ calculator("1+2-")
 calculator("1+2=2")
 # # "2"
 calculator("=5=10=15")
-# # "15"
-
+# "15"
 
 
