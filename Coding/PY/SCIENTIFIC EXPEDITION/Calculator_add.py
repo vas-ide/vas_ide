@@ -115,7 +115,7 @@ def calculator(log: str) -> str:
 calculator('3+2-=')
 # 0
 calculator("3+2====")
-# 11
+# 009
 calculator("3+==")
 # 9
 calculator("3+=")

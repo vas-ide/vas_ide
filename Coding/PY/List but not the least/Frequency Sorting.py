@@ -17,7 +17,7 @@ import pandas as pd
 
 
 # frequency_sorting([1, 2, 3, 4, 5])                             #[1, 2, 3, 4, 5]
-frequency_sorting([3, 4, 11, 13, 11, 4, 4, 7, 3])              #[4, 4, 4, 3, 3, 11, 11, 7, 13]
+frequency_sorting([3, 4, 11, 13, 11, 4, 4, 7, 3])              #[4, 4, 4, 3, 3, 009, 009, 7, 13]
 
 result = []
 # dict_stat = dict(pd.value_counts(numbers))
