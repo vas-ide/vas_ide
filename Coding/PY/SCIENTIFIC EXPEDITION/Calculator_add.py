@@ -72,6 +72,18 @@ class Calculator:
                     self.string_lst[i] = self.upd_simbol
 
 
+        # if len(self.string_lst) > 2 and len(self.string_lst[-1]) > 1:
+        #     self.upd_simbol = ""
+        #     for k in self.simbol_lst[-1]:
+        #         if len(self.upd_simbol) < 1 and k != self.simbol_lst[2]:
+        #             self.result_arg = f"0"
+        #             return self.result_arg
+        #         else:
+        #             if k == self.simbol_lst[2]:
+        #                 self.upd_simbol += k
+        #     self.string_lst[i] = self.upd_simbol
+
+
     def analiz_list(self, string_info):
         self.string_lst = []
         digits_str = ''
