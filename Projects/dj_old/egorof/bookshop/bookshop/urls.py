@@ -5,10 +5,10 @@ The `urlpatterns` list routes URLs to views. For more information please see:
 Examples:
 Function views
     1. context_generator.py an import:  from my_app import views
-    2. context_generator.py a URL to urlpatterns:  path('', views.home, name='home')
+    2. context_generator.py a URL to urlpatterns:  path('', views.sessions, name='sessions')
 Class-based views
     1. context_generator.py an import:  from other_app.views import Home
-    2. context_generator.py a URL to urlpatterns:  path('', Home.as_view(), name='home')
+    2. context_generator.py a URL to urlpatterns:  path('', Home.as_view(), name='sessions')
 Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. context_generator.py a URL to urlpatterns:  path('blog/', include('blog.urls'))

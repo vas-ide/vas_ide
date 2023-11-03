@@ -135,7 +135,7 @@ class Categories(TemplateView):
         context["steps"] = "Standard diagnostic and treatment sheet"
         context["categories"] = [
             "Delivery to clinic", "Опрос и первичный осмотр", "Диагностика и анализы",
-            "Вмешательство или процедуры", "Вторичный анализ и осмотр", "Delivery from clinic to home",
+            "Вмешательство или процедуры", "Вторичный анализ и осмотр", "Delivery from clinic to sessions",
         ]
         return context
 
