@@ -3,7 +3,7 @@ import requests
 import pytest
 
 from vas_ide.api_test.learn_qa.pytest_package.lib.assertions import Assertions
-from vas_ide.api_test.learn_qa.pytest_package.lib.basecase import BaseCase
+from vas_ide.api_test.learn_qa.pytest_package.lib.base_case import BaseCase
 
 
 class TestUserAuth(BaseCase):
