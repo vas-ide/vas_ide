@@ -7,7 +7,7 @@ class TestUserAuth:
         ("no_cookie"), ("no_token")
     ]
 
-    def setup(self):
+    def setup_method(self):
         data = {
             "email": "vinkotov@example.com",
             "password": "1234"

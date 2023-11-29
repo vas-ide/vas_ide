@@ -1,6 +1,3 @@
-
-
-
 import requests
 import pytest
 
@@ -35,6 +32,7 @@ class TestUserAuth:
     exclude_params = [
         ("no_cookie"), ("no_token")
     ]
+
     @pytest.mark.parametrize('condition', exclude_params)
     def test_negative_auth_check(self, condition):
         data = {
@@ -64,9 +62,3 @@ class TestUserAuth:
         user_id_from_check_method = response.json()["user_id"]
 
         assert user_id_from_check_method == 0, f"User is  authorized with condition {condition}"
-
-
-
-
-
-
