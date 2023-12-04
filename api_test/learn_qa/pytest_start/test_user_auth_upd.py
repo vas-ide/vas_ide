@@ -28,6 +28,7 @@ class TestUserAuth:
             headers={"x-csrf-token": self.token},
             cookies={"auth_sid": self.auth_sid}
         )
+
         assert "user_id" in response_auth.json(), f" There is no user id in the second response"
         user_id_from_check_method = response_auth.json()["user_id"]
         assert self.user_id_from_auth_method == user_id_from_check_method, f"User id from auth method is not equal user id from check method"
@@ -49,6 +50,9 @@ class TestUserAuth:
         assert "user_id" in response.json(), f"There is no user in the second response"
         user_id_from_check_method = response.json()["user_id"]
         assert user_id_from_check_method == 0, f"User is  authorized with condition {condition}"
+
+
+
 
 
 
