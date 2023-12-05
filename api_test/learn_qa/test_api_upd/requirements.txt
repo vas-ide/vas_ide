@@ -1,5 +1,5 @@
-allallure-pytest==2.13.2
-allure-python-commons==2.13.2
+allure-pytest
+allure-python-commons
 attrs==23.1.0
 certifi==2023.11.17
 charset-normalizer==3.3.2
