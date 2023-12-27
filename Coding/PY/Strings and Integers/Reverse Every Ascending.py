@@ -1,5 +1,5 @@
 from typing import Iterable
-import numpy as np
+
 
 def reverse_ascending(items: list[int]) -> Iterable[int]:
     match items:
@@ -25,7 +25,7 @@ def reverse_ascending(items: list[int]) -> Iterable[int]:
                     result.append(j)
             # result.flat
             print(result)
-            result result
+
 
 
 
