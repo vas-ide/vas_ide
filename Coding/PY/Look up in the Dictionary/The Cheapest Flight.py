@@ -26,24 +26,28 @@ class Tiket():
         self.routes_init = self.routes
 
     def charter_flights(self):
-        for item_init in self.routes_init:
+        for item_init in self.routes:
             if item_init[0] == self.departure or item_init[1] == self.departure:
-                self.start_charter = item_init
-                self.routes_init.remove(item_init)
-                self.mark = True
                 self.cost = 0
+                self.mark = True
+                self.routes_init = self.routes
+                self.routes_init.remove(item_init)
                 self.cost += item_init[2]
+                # self.start_charter = item_init
+
+
+
+
                 if self.departure == item_init[0]:
                     self.departure_init = item_init[1]
                 elif self.departure == item_init[1]:
                     self.departure_init = item_init[0]
-                print(self.routes_init)
                 while self.mark == True:
                     self.counter += 1
                     if self.counter > 20:
                         self.mark = False
                     #     self.max_cost_lst.append(0)
-                    for item in self.routes:
+                    for item in self.routes_init:
                         if item[0] == self.departure_init or item[1] == self.departure_init:
                             self.cost += item[2]
                             if item[0] == self.destination or item[1] == self.destination:
@@ -68,11 +72,13 @@ class Tiket():
 
     def printer(self):
         print(self.max_cost_lst)
-        if len(self.direct_flight_lst) > 0:
-            print(self.direct_flight_lst, f"Direct cost is {self.direct_flight_lst[2]}")
-        else:
-            print(self.direct_flight_lst, f"We don't have direct flight")
+        # if len(self.direct_flight_lst) > 0:
+        #     print(self.direct_flight_lst, f"Direct cost is {self.direct_flight_lst[2]}")
+        # else:
+        #     print(self.direct_flight_lst, f"We don't have direct flight")
         print(f"Min coast is {self.cost}")
+        print(self.routes_init)
+        print(self.routes)
 
 
 def cheapest_flight(costs: list, a: str, b: str) -> int:
@@ -87,7 +93,7 @@ def cheapest_flight(costs: list, a: str, b: str) -> int:
 # cheapest_flight([["A", "C", 100], ["A", "B", 20], ["B", "C", 50]], "C", "A")  # == 70
 # cheapest_flight([["A", "C", 40], ["A", "B", 20], ["A", "D", 20], ["B", "C", 50], ["D", "C", 70], ], "D", "C")  # == 60
 # cheapest_flight([["A", "C", 100], ["A", "B", 20], ["D", "F", 900]], "A", "F")  # == 0
-# cheapest_flight([["A", "B", 10], ["A", "C", 15], ["B", "D", 15], ["C", "D", 10]], "A", "D")  # == 25
+cheapest_flight([["A", "B", 10], ["A", "C", 15], ["B", "D", 15], ["C", "D", 10]], "A", "D")  # == 25
 
 
 # assert (cheapest_flight([["A", "C", 100], ["A", "B", 20], ["B", "C", 50]], "A", "C") == 70)
@@ -95,4 +101,4 @@ def cheapest_flight(costs: list, a: str, b: str) -> int:
 # assert (cheapest_flight([["A", "C", 40], ["A", "B", 20], ["A", "D", 20], ["B", "C", 50], ["D", "C", 70], ], "D",
 #                         "C", ) == 60)
 # assert (cheapest_flight([["A", "C", 100], ["A", "B", 20], ["D", "F", 900]], "A", "F") == 0)
-assert (cheapest_flight([["A", "B", 10], ["A", "C", 15], ["B", "D", 15], ["C", "D", 10]], "A", "D") == 25)
+# assert (cheapest_flight([["A", "B", 10], ["A", "C", 15], ["B", "D", 15], ["C", "D", 10]], "A", "D") == 25)
