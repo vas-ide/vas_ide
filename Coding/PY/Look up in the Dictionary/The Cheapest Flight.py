@@ -84,7 +84,10 @@ class Tiket():
         self.printer()
 
     def printer(self):
-        print(self.charter_min_cost)
+        print(f"{self.departure:^30}{self.destination}")
+        [print(f"Routes: --- {key:<20} Coast={value}") for key, value in self.generate_rutes.items() if
+         key[0] == self.departure and key[-1] == self.destination]
+        print(f"Min Coast = {self.charter_min_cost:^45}")
         # print(self.max_cost_lst)
         # print(self.generate_rutes)
         # if len(self.direct_flight_lst) > 0:
