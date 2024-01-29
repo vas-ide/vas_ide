@@ -3,9 +3,11 @@ class BloodDistribution:
     def __init__(self, avaible, needs):
         self.avaible = avaible
         self.needs = needs
+        self.plan = {}
         self.avaible_upd = {}
         self.needs_upd = {}
         self.dif_dict = {}
+        self.dif = {}
         pass
 
     def calculate_blood(self):
@@ -17,15 +19,44 @@ class BloodDistribution:
                 if key == key_add:
                     self.avaible_upd[key][key_add] = value
                     self.needs_upd[key][key_add] = value_add
-                    self.dif_dict[key][key_add] = value - value_add
+                    self.dif_dict[key][key_add] = (value - value_add)
+                    # (value - value_add)
+                    self.dif[key] = value - value_add
                 else:
                     self.avaible_upd[key][key_add] = 0
                     self.needs_upd[key][key_add] = 0
                     self.dif_dict[key][key_add] = 0
 
     def deliver_blood(self):
+        for key, value in self.dif.items():
+            if value < 0:
+                if key == "A":
+                    if self.dif["AB"] - value >= 0:
+                        differn = abs(value) - abs(self.dif["AB"])
+                        self.dif["AB"] = value - differn
+                        self.dif_dict["A"]["AB"] = differn
+                elif key == "B":
+                    if self.dif["AB"] - value >= 0:
+                        differn = abs(value) - abs(self.dif["AB"])
+                        self.dif["AB"] = value - differn
+                        self.dif_dict["B"]["AB"] = differn
+                elif key == "AB":
+                    if self.dif["A"] > 0:
+                        differn = self.dif["AB"] + self.dif["A"]
+                        pass
+                        # self.dif_dict["A"]["AB"] = self.dif["A"] - differn
+                        # self.dif["AB"] = abs(self.dif["A"]) - abs(value)
+                        # self.dif["A"] = abs(value) - abs(self.dif["A"])
+                        # self.dif_dict["AB"]["A"] = self.dif_dict["AB"]["A"] - differn
+                        print(differn)
+                    elif self.dif["B"] > 0:
+                        pass
+                        # differn = abs(value) - abs(self.dif["B"])
+                        # self.dif_dict["B"]["AB"] = self.dif["B"] - differn
+                        # self.dif["AB"] = abs(self.dif["B"]) - abs(value)
+                        # self.dif["B"] = abs(value) - abs(self.dif["A"])
 
-        pass
+
 
     def run(self):
         self.calculate_blood()
@@ -42,6 +73,8 @@ class BloodDistribution:
         [print(f"{key:<5}{value}") for key, value in self.needs_upd.items()]
         print(f"\n{dif:^40}")
         [print(f"{key:<5}{value}") for key, value in self.dif_dict.items()]
+        print(f"\n{self.dif}")
+
         pass
 
 
