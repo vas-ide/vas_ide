@@ -9,6 +9,7 @@ def remove_min_max(data: set[int], total: int) -> set[int]:
 
 
 
+
 assert remove_min_max({8, 9, 18, 7}, 1) == {8, 9}
 assert remove_min_max({8, 9, 7}, 0) == {8, 9, 7}
 assert remove_min_max({8, 9, 7}, 2) == set()
