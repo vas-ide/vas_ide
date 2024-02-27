@@ -75,7 +75,7 @@ def create_init_matrix(matrix, side):
 
 
 square_board(10,33,34)
-# assert square_board(6,13,40) == (0, 3)
+# assert square_board(6,pillow_ticket,40) == (0, 3)
 # assert square_board(11, 18, 56) == (4,10)
 # assert square_board(7, 12, 12) == (6, 6)
 # assert square_board(4, 1, 4) == (1, 0)
